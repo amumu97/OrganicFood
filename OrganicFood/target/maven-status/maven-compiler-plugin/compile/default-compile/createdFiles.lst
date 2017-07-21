@@ -1,0 +1,6 @@
+com/of/daoimpl/Userdaoimpl.class
+com/of/dao/UserDao.class
+com/of/model/Users.class
+com/of/controller/RegistrationController.class
+com/of/config/DBConfig.class
+com/of/controller/HomeController.class
