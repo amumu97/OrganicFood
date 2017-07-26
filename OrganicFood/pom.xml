@@ -15,7 +15,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!--all dependency -->
+		<!--Dependencies -->
 
 
 		<dependency>
@@ -177,14 +177,14 @@
 			<version>2.5</version>
 
 		</dependency>
-		<!--all dependency done -->
-
-
-
-
-
+	
 	</dependencies>
+	
+	<!--End of Dependencies -->
 	<build>
+	
 		<finalName>OrganicFood</finalName>
+		
 	</build>
+	
 </project>

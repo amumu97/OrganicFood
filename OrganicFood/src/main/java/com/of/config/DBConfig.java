@@ -13,6 +13,11 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.of.daoimpl.*;
+import com.of.model.*;
+import com.of.dao.*;
+
+
 @Configuration
 @ComponentScan("com.of")
 @EnableTransactionManagement
@@ -47,6 +52,9 @@ public class DBConfig {
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 		sessionBuilder.addProperties(getHibernateProperties());
 		sessionBuilder.scanPackages("com.of");
+		sessionBuilder.addAnnotatedClass(Users.class);
+		sessionBuilder.addAnnotatedClass(Category.class);
+		sessionBuilder.addAnnotatedClass(Product.class);
 		System.out.println("Session");
 		
 		return sessionBuilder.buildSessionFactory();
@@ -60,10 +68,33 @@ public class DBConfig {
 		System.out.println("Transaction");
 		return transactionManager;
 	}
+	
+	@Autowired
+	@Bean(name="productDao")
+	public ProductDao getProductDAO(SessionFactory sessionFactory){
+		return new ProductDaoImpl(sessionFactory);
+	}
+	
+	
+	@Autowired
+	@Bean(name="supplierDao")
+	public SupplierDao getSupplierDAO(SessionFactory sessionFactory){
+		return new SupplierDaoImpl(sessionFactory);
+	}
+	
+	@Autowired
+	@Bean(name="categoryDao")
+	public CategoryDao getCategoryDAO(SessionFactory sessionFactory) {
+		return new CategoryDaoImpl();
+	}
 
 	
-//	@Autowired
-	//@Bean(name = "userDetailsDAO")
-	//public UserDetailsDAO getUserDetailsDAO(SessionFactory sessionFactory) {
-		//	return new UserDetailsDAOImpl(sessionFactory);
+	
+	@Autowired
+	@Bean(name = "userDao")
+		public UserDao getUserDetailsDAO(SessionFactory sessionFactory) {
+			return new UserDAOImpl();
 	}
+
+}
+	

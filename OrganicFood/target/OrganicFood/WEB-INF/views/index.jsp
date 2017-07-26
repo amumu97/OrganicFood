@@ -83,6 +83,7 @@ body{background-color: #fff;}
 </div>  
 
 <!-- Footer Code -->
+
 	<footer class="footer">
       <div class="container">
  	<ul class="social-icon animate pull-right">
@@ -93,10 +94,12 @@ body{background-color: #fff;}
                 </div>
     </footer>
 
-    
 <!-- End of Footer Code -->
 
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"> 
+
+<!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">  -->
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>  
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
 </body>  
