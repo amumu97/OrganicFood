@@ -52,9 +52,6 @@ public class DBConfig {
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 		sessionBuilder.addProperties(getHibernateProperties());
 		sessionBuilder.scanPackages("com.of");
-		sessionBuilder.addAnnotatedClass(Users.class);
-		sessionBuilder.addAnnotatedClass(Category.class);
-		sessionBuilder.addAnnotatedClass(Product.class);
 		System.out.println("Session");
 		
 		return sessionBuilder.buildSessionFactory();

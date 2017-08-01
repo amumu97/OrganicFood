@@ -1,0 +1,46 @@
+package com.of.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.of.dao.CategoryDao;
+import com.of.dao.SupplierDao;
+import com.of.model.*;
+
+@Controller
+public class CategoryController 
+{
+	@Autowired
+	CategoryDao categoryDao;
+	
+	@RequestMapping( value="/add",method=RequestMethod.GET)
+	
+//	CATEGORY FORM 
+	
+	public String addPage(@ModelAttribute("category") Category category,Model model)
+	
+	{
+		model.addAttribute("categoryList",categoryDao.getCategories());
+		return "adding";
+	}
+	
+	@RequestMapping(value="/saveCategory", method= RequestMethod.POST)
+	@Transactional
+	public ModelAndView saveCategory(@ModelAttribute("category") Category category)
+	{
+		ModelAndView mav = new ModelAndView();
+		
+		categoryDao.insertCategory(category);
+		mav.setViewName("adding");
+		return mav;
+	}
+
+	
+}

@@ -1,8 +1,8 @@
 package com.of.model;
 
 import java.io.Serializable; 
-import javax.persistence.Entity; 
-import javax.persistence.FetchType; 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,22 +17,26 @@ public class Product implements Serializable
 {
 	private static final long serialVersionUID = 1L; 
 	@Id
-	private int id; 
+	private int pId; 
 	private String name;
 	private String description; 
 	private Float price;
 	private int stock; 
 	
-	//@ManyToOne(fetch=FetchType.LAZY)
-	//@JoinColumn(name="catId")
-	//private Category category;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="category_id")
+	private Category category;
+
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="supplier_id")
+	private Supplier supplier;
 
 	public int getId() {
-		return id;
+		return pId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int pId) {
+		this.pId = pId;
 	}
 
 	public String getName() {
@@ -66,17 +70,13 @@ public class Product implements Serializable
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-//
-//	public Category getCategory() {
-//		return category;
-//	}
-//
-//	public void setCategory(Category category) {
-//		this.category = category;
-//	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;	
 	}
 	
 

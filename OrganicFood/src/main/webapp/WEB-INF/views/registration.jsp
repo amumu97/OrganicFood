@@ -1,15 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
+
+ <title>Bootstrap Case</title>  
+  <meta charset="utf-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">  
+
 </head>
+
 <body>
-        <h3>Welcome, Enter The Employee Details</h3>
+<jsp:include page="navbar.jsp"/>
+
+
+        <h3>Hi! To Register, Enter your details: </h3>
         <form:form method="POST" action="saveUser" modelAttribute="users" >
 	<div> 
              <table>
@@ -41,4 +49,6 @@
 	</div>
         </form:form>
     </body>
+
+<jsp:include page="footer.jsp"/>
 </html>

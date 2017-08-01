@@ -24,11 +24,12 @@ public class Category {
 	
 	@Id
 	@GeneratedValue
+	@Column(name="category_id")
 	private int catId;
 	private String name;
 	private String description; 
-	//@OneToMany(targetEntity=Product.class, fetch=FetchType.EAGER, mappedBy="Category")
-	//private Set<Product> products = new HashSet<Product>(0); 
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="category")
+	private Set<Product> products = new HashSet<Product>(0); 
 	
 	public int getCatId() {
 		return catId;
@@ -45,15 +46,15 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
-//	
-//	public Set<Product> getProducts() {
-//		return products;
-//	}
-//	
-//	public void setProducts(Set<Product> products) {
-//		this.products = products;
-//	}
-//
+
+    public Set<Product> getProducts() {
+		return products;
+	}
+	
+	public void setProducts(Set<Product> products) {
+		this.products = products;
+	}
+
 	public String getDescription() {
 		return description;
 	}
