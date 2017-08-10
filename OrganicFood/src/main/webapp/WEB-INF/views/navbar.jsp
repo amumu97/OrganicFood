@@ -18,8 +18,10 @@
       <a class="navbar-brand" href="#">The Warehouse</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="adding"><a href="add">Admin</a></li>
-      <li><a href="#">Shop by: Category</a></li>  <!--  //Shop by: Category  -->
+      <li class="addingCat"><a href="category">Category</a></li>
+      <li class="addingSupp"><a href="supplier">Supplier</a></li>
+      <li class="addingProd"><a href="product">Product</a></li>
+      <li><a href="#">Shop by: Category</a></li>  
       </ul>
       <form class="navbar-form navbar-left">
       <div class="form-group">
@@ -33,7 +35,6 @@
     </ul>
   </div>
 </nav>
-
 
 </body>
 </html>

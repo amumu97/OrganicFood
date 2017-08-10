@@ -36,11 +36,10 @@ private String supplierName;
 @OneToMany(fetch=FetchType.EAGER, mappedBy="supplier",cascade=CascadeType.ALL)
 private Set<Product> product= new HashSet<Product>(0);
 
-
-public int getId() {
+public int getsId() {
 	return sId;
 }
-public void setId(int sId) {
+public void setsId(int sId) {
 	this.sId = sId;
 }
 public String getSupplierName() {

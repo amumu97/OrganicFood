@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html>
 <head>
@@ -18,8 +18,10 @@
       <a class="navbar-brand" href="#">The Warehouse</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Shop by: Category</a></li>
+      <li class="addingCat"><a href="category">Category</a></li>
+      <li class="addingSupp"><a href="supplier">Supplier</a></li>
+      <li class="addingProd"><a href="product">Product</a></li>
+      <li><a href="#">Shop by: Category</a></li>  
       </ul>
       <form class="navbar-form navbar-left">
       <div class="form-group">

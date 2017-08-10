@@ -7,11 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.of.dao.CategoryDao;
-import com.of.dao.SupplierDao;
 import com.of.model.*;
 
 @Controller
@@ -20,15 +18,16 @@ public class CategoryController
 	@Autowired
 	CategoryDao categoryDao;
 	
-	@RequestMapping( value="/add",method=RequestMethod.GET)
+	@RequestMapping( value="/category",method=RequestMethod.GET)
 	
 //	CATEGORY FORM 
 	
 	public String addPage(@ModelAttribute("category") Category category,Model model)
 	
 	{
+		model.addAttribute("category", new Category());
 		model.addAttribute("categoryList",categoryDao.getCategories());
-		return "adding";
+		return "categoryForm";
 	}
 	
 	@RequestMapping(value="/saveCategory", method= RequestMethod.POST)
@@ -38,9 +37,16 @@ public class CategoryController
 		ModelAndView mav = new ModelAndView();
 		
 		categoryDao.insertCategory(category);
-		mav.setViewName("adding");
+		mav.setViewName("categoryForm");
 		return mav;
 	}
 
+	@RequestMapping(value ="Admin" )
+	public ModelAndView AdminPage() {
+		ModelAndView mv= new ModelAndView("/Admin");
+		mv.addObject("showadminPage", "true");
+		return mv;
+	}
+	
 	
 }

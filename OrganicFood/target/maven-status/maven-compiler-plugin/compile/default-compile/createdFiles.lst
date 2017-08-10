@@ -6,10 +6,12 @@ com/of/daoimpl/UserDAOImpl.class
 com/of/model/Users.class
 com/of/controller/RegistrationController.class
 com/of/model/Supplier.class
+com/of/controller/CategoryController.class
+com/of/controller/SupplierController.class
 com/of/model/Category.class
 com/of/dao/CategoryDao.class
 com/of/daoimpl/SupplierDaoImpl.class
 com/of/model/Product.class
 com/of/config/DBConfig.class
+com/of/controller/ProductController.class
 com/of/dao/ProductDao.class
-com/of/controller/AdminController.class

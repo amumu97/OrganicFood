@@ -1,6 +1,8 @@
 <html lang="en">  
 <head>  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>  
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
   <title>Bootstrap Case</title>  
   <meta charset="utf-8">  
   <meta name="viewport" content="width=device-width, initial-scale=1">  
@@ -14,12 +16,12 @@
     
 <div class="container">  
   <h3>This Is A Heading</h3>  
-  <p>Just some random text to fill space.</p>  
+  <p> Tag line of your choice. </p>  
 </div>  
 
 <jsp:include page="footer.jsp"/>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>  
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
 </body>  
 </html>  
+
+

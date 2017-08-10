@@ -14,6 +14,8 @@ public class Users{
 	
 	private String name,email,address,password,role;
 	
+	private boolean enabled; 
+	
 	public int getId() {
 		return id;
 	}
@@ -49,6 +51,12 @@ public class Users{
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	
 	
