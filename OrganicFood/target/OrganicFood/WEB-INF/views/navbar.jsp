@@ -2,6 +2,7 @@
 <%@ page isELIgnored="false" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
@@ -14,15 +15,21 @@
 
 <nav class="navbar navbar-inverse">  
   <div class="container-fluid">  
+    
     <div class="navbar-header">  
       <a class="navbar-brand" href="#">The Warehouse</a>
-    </div>
+   	</div>
+    
     <ul class="nav navbar-nav">
+    
+    
       <li class="addingCat"><a href="category">Category</a></li>
       <li class="addingSupp"><a href="supplier">Supplier</a></li>
       <li class="addingProd"><a href="product">Product</a></li>
       <li><a href="#">Shop by: Category</a></li>  
-      </ul>
+      
+    </ul>
+    
       <form class="navbar-form navbar-left">
       <div class="form-group">
         <input type="text" class="form-control" placeholder="Search">
@@ -32,10 +39,17 @@
     <ul class="nav navbar-nav navbar-right">
       <li><a href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+  
+   <c:if test="${pageContext.request.userPrincipal.name!=null }">
+   <li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
+   <li><a href=" <c:url value="/logout"/>" > Logout </a></li>
+   </c:if>
+   
     </ul>
+  
+ 
   </div>
 </nav>
-
 
 </body>
 </html>

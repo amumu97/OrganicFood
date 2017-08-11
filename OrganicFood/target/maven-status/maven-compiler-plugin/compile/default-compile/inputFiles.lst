@@ -1,11 +1,11 @@
 /Users/amandhagoriparthi/git/OrganicFood/OrganicFood/src/main/java/com/of/model/Category.java
+/Users/amandhagoriparthi/git/OrganicFood/OrganicFood/src/main/java/com/of/controller/HomeController.java
 /Users/amandhagoriparthi/git/OrganicFood/OrganicFood/src/main/java/com/of/daoimpl/CategoryDaoImpl.java
 /Users/amandhagoriparthi/git/OrganicFood/OrganicFood/src/main/java/com/of/daoimpl/SupplierDaoImpl.java
 /Users/amandhagoriparthi/git/OrganicFood/OrganicFood/src/main/java/com/of/model/Supplier.java
 /Users/amandhagoriparthi/git/OrganicFood/OrganicFood/src/main/java/com/of/controller/SupplierController.java
 /Users/amandhagoriparthi/git/OrganicFood/OrganicFood/src/main/java/com/of/daoimpl/ProductDaoImpl.java
 /Users/amandhagoriparthi/git/OrganicFood/OrganicFood/src/main/java/com/of/model/Product.java
-/Users/amandhagoriparthi/git/OrganicFood/OrganicFood/src/main/java/com/of/controller/RegistrationController.java
 /Users/amandhagoriparthi/git/OrganicFood/OrganicFood/src/main/java/com/of/dao/UserDao.java
 /Users/amandhagoriparthi/git/OrganicFood/OrganicFood/src/main/java/com/of/controller/CategoryController.java
 /Users/amandhagoriparthi/git/OrganicFood/OrganicFood/src/main/java/com/of/dao/ProductDao.java

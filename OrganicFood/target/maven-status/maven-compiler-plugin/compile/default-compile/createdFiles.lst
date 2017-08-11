@@ -1,10 +1,10 @@
 com/of/dao/SupplierDao.class
 com/of/dao/UserDao.class
 com/of/daoimpl/ProductDaoImpl.class
+com/of/controller/HomeController.class
 com/of/daoimpl/CategoryDaoImpl.class
 com/of/daoimpl/UserDAOImpl.class
 com/of/model/Users.class
-com/of/controller/RegistrationController.class
 com/of/model/Supplier.class
 com/of/controller/CategoryController.class
 com/of/controller/SupplierController.class

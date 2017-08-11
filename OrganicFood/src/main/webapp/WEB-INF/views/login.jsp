@@ -1,38 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Insert title here</title>
+	<title>Welcome to Login Page </title>
 </head>
 <body>
 	 
 	<jsp:include page="navbar.jsp"/>
 	
-	<form:form method="POST" action="saveUser" modelAttribute="users" >
-			<div> 
-			<table>
-			
-				<tr>
-					<td><form:label path="email">Email</form:label></td>
-					<td><form:input path="email"/></td>
-				</tr>
-				
-				<tr>
-					<td><form:label path="password">Password</form:label></td>
-					<td><form:input path="password"/></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="Submit"/></td>
-				</tr>
-				
-			</table>
+			<div class="card card-container"> 
+				<h2 class='login_title text-center'> Login </h2>
+					<hr>
+					<form method="POST" action="${pageContext.request.contextPath}/login" class="form-signin" modelAttribute="users">
+					 	<span id="reauth-email" class"reauth-email"></span>
+					 	<h4 class="input-title"> Email </h4> 
+					 	<input type ="text" id="inputEmail" name="username" class="login_box" placeholder="Enter your email address"/>
+					 	<h4 class="input-title"> Password </h4>
+					 	<input type="password" id="inputPassword" name="password" class="login_box" placeholder="Enter your password"/> 
+					 	<div id="remember" class="checkbox"></div>
+					 	
+					 	<button class="btn btn-lg btn-primary" type="submit"> Login </button>
+					</form>
 			</div>
-	</form:form>
-	 
 </body>
 	
 	<jsp:include page="footer.jsp"/> 
