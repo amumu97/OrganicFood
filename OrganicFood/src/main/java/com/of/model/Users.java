@@ -2,8 +2,6 @@ package com.of.model;
 
 import javax.persistence.*;
 
-
-
 @Entity
 @Table(name="User_Details")
 public class Users{

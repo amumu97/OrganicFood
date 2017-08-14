@@ -59,6 +59,7 @@ public class HomeController {
 	{
 		
 		users.setRole("ROLE_USER");
+		users.setEnabled(true);
 		userDao.saveUser(users);
 		
 		return "redirect:/login";
