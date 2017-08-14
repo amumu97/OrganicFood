@@ -15,10 +15,25 @@ public class UserDAOImpl implements UserDao {
 	
 	@Transactional
 	public boolean saveUser(Users user) {
-		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().saveOrUpdate(user);
 		
+		sessionFactory.getCurrentSession().saveOrUpdate(user);
 		return true;
 	}
 
+	public Users get(String email) {
+		return null;
+	}
+
+//	@Transactional
+//	public boolean delete(Users user) {
+//		try {
+//			sessionFactory.getCurrentSession().delete(user);
+//			return true;
+//		
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return false;
+//			
+//		}
+//	}
 }

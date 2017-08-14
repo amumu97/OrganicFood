@@ -5,5 +5,6 @@ import com.of.model.Users;
 public interface UserDao {
 
 	public boolean saveUser(Users user);
+	public Users get(String email);
 
 }
