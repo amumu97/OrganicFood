@@ -35,19 +35,15 @@
         <input type="text" class="form-control" placeholder="Search">
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-  
-   <c:if test="${pageContext.request.userPrincipal.name!=null }">
-   <li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
-   <li><a href=" <c:url value="/logout"/>" > Logout </a></li>
-   </c:if>
-   
-    </ul>
-  
- 
+      </form>
+	    <ul class="nav navbar-nav navbar-right">
+	   <c:if test="${pageContext.request.userPrincipal.name!=null }">
+	   <li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
+	   <li><a href=" <c:url value="/logout"/>" > Logout </a></li>
+	   </c:if>
+	   
+	    </ul>
+    
   </div>
 </nav>
 

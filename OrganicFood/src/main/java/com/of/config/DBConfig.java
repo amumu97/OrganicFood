@@ -85,7 +85,11 @@ public class DBConfig {
 		return new CategoryDaoImpl();
 	}
 
-	
+	@Autowired
+	@Bean(name="cartDao")
+	public CartDao getCartDAO(SessionFactory sessionFactory) {
+		return new CartDaoImpl();
+	}
 	
 	@Autowired
 	@Bean(name = "userDao")

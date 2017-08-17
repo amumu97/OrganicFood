@@ -12,10 +12,10 @@
 	      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<jsp:include page="navbar.jsp"/>
+	<jsp:include page="navbar.jsp"></jsp:include>
         <center>
         
-        <form:form method="POST" action="saveProduct" modelAttribute="product">
+        <form:form method="POST" action="saveProduct" modelAttribute="product" enctype="multipart/form-data">
              <table>
 	                <tr>
 			                    <td><form:label path="name">Product Name</form:label></td>
@@ -37,6 +37,7 @@
 			                    <td><form:input path="stock"/></td>
 		            </tr>
 		            
+		              
           			<tr>
 								<td><form:label class="btn btn-default btn-block" path="supplier_id">Select a Supplier</form:label></td>
 								<td><form:select path="supplier_id" class="form-control" required="true">
@@ -54,9 +55,16 @@
 										</c:forEach>
 									</form:select></td>
 					</tr>
+					<tr>
+			                    <td><form:label path="image">Product Image</form:label></td>
+			                    <td><form:input type="file" path="image"/></td>
+			                    
+                  
+		            </tr>
+		          
 					
      				<tr>
-  						<td><input type="submit" value="Submit"/></td>
+  					<td><input type="submit" value="Submit"/></td>
                 	</tr>
             </table>
        </form:form>
@@ -64,6 +72,6 @@
 
 </body>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="footer.jsp"></jsp:include>
 
 </html>

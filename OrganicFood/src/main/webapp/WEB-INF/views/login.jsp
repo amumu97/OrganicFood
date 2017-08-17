@@ -8,28 +8,30 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Welcome to Login Page </title>
+ 
 </head>
 <body>
 	 
-	<jsp:include page="navbar.jsp"/>
+	<jsp:include page="index.jsp"/>
+	
+	<c:url var="actionUrl" value="j_spring_security_check" />
+	
 	
 			<div class="card card-container"> 
 				<h2 class='login_title text-center'> Login </h2>
 					<hr>
-					<form method="POST" action="${pageContext.request.contextPath}/login" class="form-signin" modelAttribute="users">
-					 	<span id="reauth-email" class"reauth-email"></span>
-					 	<h4 class="input-title"> Email </h4> 
-					 	<input type ="text" id="inputEmail" name="username" class="login_box" placeholder="Enter your email address"/>
+					<form method ="post" action = "${var}">
+									 	<h4 class="input-title"> Email </h4> 
+					 	<input type ="text" id="inputEmail" name="j_username" class="login_box" placeholder="Enter your email address"/>
 					 	<h4 class="input-title"> Password </h4>
-					 	<input type="password" id="inputPassword" name="password" class="login_box" placeholder="Enter your password"/> 
+					 	<input type="password" id="inputPassword" name="j_password" class="login_box" placeholder="Enter your password"/> 
 					 	<div id="remember" class="checkbox"></div>
-					 	
 					 	<button class="btn btn-lg btn-primary" type="submit"> Login </button>
 					</form>
+					
+					
 			</div>
-</body>
-	
-	<jsp:include page="footer.jsp"/> 
-	
+</body>	
 </html>
 
+${error}

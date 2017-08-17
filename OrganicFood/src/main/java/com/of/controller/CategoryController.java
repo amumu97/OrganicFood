@@ -20,11 +20,7 @@ public class CategoryController
 	
 	@RequestMapping( value="/category",method=RequestMethod.GET)
 	
-//	CATEGORY FORM 
-	
-	public String addPage(@ModelAttribute("category") Category category,Model model)
-	
-	{
+	public String addPage(@ModelAttribute("category") Category category,Model model) {
 		model.addAttribute("category", new Category());
 		model.addAttribute("categoryList",categoryDao.getCategories());
 		return "categoryForm";
@@ -32,8 +28,7 @@ public class CategoryController
 	
 	@RequestMapping(value="/saveCategory", method= RequestMethod.POST)
 	@Transactional
-	public ModelAndView saveCategory(@ModelAttribute("category") Category category)
-	{
+	public ModelAndView saveCategory(@ModelAttribute("category") Category category) {
 		ModelAndView mav = new ModelAndView();
 		
 		categoryDao.insertCategory(category);
@@ -41,12 +36,12 @@ public class CategoryController
 		return mav;
 	}
 
-	@RequestMapping(value ="Admin" )
-	public ModelAndView AdminPage() {
-		ModelAndView mv= new ModelAndView("/Admin");
-		mv.addObject("showadminPage", "true");
-		return mv;
-	}
+//	@RequestMapping(value ="Admin" )
+//	public ModelAndView AdminPage() {
+//		ModelAndView mv= new ModelAndView("/Admin");
+//		mv.addObject("showadminPage", "true");
+//		return mv;
+//	}
 	
 	
 }

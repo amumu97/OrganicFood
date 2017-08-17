@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.of.dao.UserDao;
 import com.of.dao.CategoryDao;
+import com.of.dao.ProductDao;
 import com.of.dao.SupplierDao;
 
 import com.of.model.Product;
@@ -29,16 +30,26 @@ public class HomeController {
 
 	@Autowired
 	UserDao userDao;
+
+	@Autowired
 	SupplierDao supplierDao;
+
+	@Autowired
 	CategoryDao categoryDao;
+
+	@Autowired
+	ProductDao productDao;
+	
 	
 	
 	@RequestMapping(value="/")
-	public String landPage(@ModelAttribute("Users")Users users,BindingResult result,Model model)
+	public String landPage(@ModelAttribute("Users")Users users,BindingResult result,Model model,HttpSession session)
 	{
+		model.addAttribute("PList", productDao.getProducts());
 		return "index";
 		
 	}
+
 	
 
 	@RequestMapping(value="/register")
@@ -49,7 +60,7 @@ public class HomeController {
 		
 	}
 	
-	 @RequestMapping(value="/login")
+	@RequestMapping(value="/login")
 	    public String login(@RequestParam(value="invalid",required=false) String error,
 	    @RequestParam(value="logout",required=false) String logout, Model model)
 	 
@@ -60,7 +71,7 @@ public class HomeController {
 		 if(logout!=null)
 	    		model.addAttribute("logout","You have logged out successfully!");
 	    		model.addAttribute("LoginPageClicked", true);
-	    	return "/login";
+	    	return "login";
 	    	
 	    }
 	
@@ -75,8 +86,7 @@ public class HomeController {
 			session.setAttribute("name", user.getEmail());
 			session.setAttribute("LoggedIn", "true");
 
-			Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) SecurityContextHolder.getContext()
-			.getAuthentication().getAuthorities();
+			Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 			String role="ROLE_USER";
 			for (GrantedAuthority authority : authorities) 
 			{
@@ -94,27 +104,27 @@ public class HomeController {
 			    	 model.addAttribute("ProductPageClicked", "true");
 			    	 model.addAttribute("supplierList",supplierDao.getSuppliers());
 			    	 model.addAttribute("categoryList",categoryDao.getCategories());
-				 return "/index";
+				 return "/productForm";
 				 
 			     }
 		}
 			return "/index";
 		
 		}
-	
-	@RequestMapping(value="/userLogged")
-	public String userLogged()
-	{
-		return "redirect:/index";
-		
-	}
-	
-	@RequestMapping(value="/error")
-	public String errorPage()
-	{
-		return "/error";
-		
-	}
+//	
+//	@RequestMapping(value="/userLogged")
+//	public String userLogged()
+//	{
+//		return "redirect:/index";
+//		
+//	}
+//	
+//	@RequestMapping(value="/error")
+//	public String errorPage()
+//	{
+//		return "error";
+//		
+//	}
 	
 	@RequestMapping(value="/saveUser",method = RequestMethod.POST)
 	public String addUser(@ModelAttribute("users")Users users, RedirectAttributes attributes)

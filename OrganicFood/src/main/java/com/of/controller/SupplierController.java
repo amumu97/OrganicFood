@@ -18,9 +18,7 @@ public class SupplierController {
 	@Autowired
 	SupplierDao supplierDao;
 	
-//	SUPPLIER FORM 
-	
-@RequestMapping(value="/supplier", method= RequestMethod.GET)
+    @RequestMapping(value="/supplier", method= RequestMethod.GET)
 	
     public String addSupplierPage(@ModelAttribute("supplier") Supplier supplier,Model model)
 	

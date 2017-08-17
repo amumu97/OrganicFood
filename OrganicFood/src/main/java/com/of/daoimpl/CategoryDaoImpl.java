@@ -30,24 +30,28 @@ public class CategoryDaoImpl implements CategoryDao
 	@Transactional
 	public void insertCategory(Category category) {
 		
-		
-		log.info("Category save operation start");
+		log.info("Category save operation has started");
 		sessionFactory.getCurrentSession().saveOrUpdate(category);
 		log.info("Category Object has been saved successfully");
 		
 			}
 
-
-
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Transactional
 	public List<Category> getCategories() {
-	
-		log.info("Category Ojbect getCateogryies();");
-		List<Category> list=(List<Category>) sessionFactory.getCurrentSession().createCriteria(Category.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 		
-		log.info("Category Object has been retrived");
+		List<Category> list=(List<Category>) sessionFactory
+				.getCurrentSession().createCriteria(Category.class)
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();	
+		
+		log.info("Category Object has been retrieved");
 		return list;
 	}
+	
+	
+	
+	
+	
+	
 	
 	}
