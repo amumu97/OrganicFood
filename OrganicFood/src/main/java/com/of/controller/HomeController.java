@@ -76,10 +76,10 @@ public class HomeController {
 	    }
 	
 	 
-	 @SuppressWarnings("unchecked")
+	    @SuppressWarnings("unchecked")
 		@RequestMapping(value = "/login_session_attributes")
-		public String login_session_attributes( HttpSession session, Model model ) 
-	 {
+		public String login_session_attributes( HttpSession session, Model model ) {
+		 
 			String email = SecurityContextHolder.getContext().getAuthentication().getName();
 			Users user = userDao.get(email);
 			session.setAttribute("userid", user.getId());
@@ -88,17 +88,15 @@ public class HomeController {
 
 			Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 			String role="ROLE_USER";
-			for (GrantedAuthority authority : authorities) 
-			{
-			  
-			     if (authority.getAuthority().equals(role)) 
-			     {
+			for (GrantedAuthority authority : authorities) {
+				
+			   if (authority.getAuthority().equals(role)) {
 			    	 session.setAttribute("UserLoggedIn", "true");
 			    	 return "redirect:/";
 			    	 
-			     }
-			     else 
-			     {
+			    	 
+			     }else {
+			    	 
 			    	 session.setAttribute("Administrator", "true");
 			    	 model.addAttribute("product",  new Product());
 			    	 model.addAttribute("ProductPageClicked", "true");
@@ -108,7 +106,7 @@ public class HomeController {
 				 
 			     }
 		}
-			return "/index";
+			return "/index";  
 		
 		}
 //	
@@ -133,14 +131,11 @@ public class HomeController {
 		users.setRole("ROLE_USER");
 		users.setEnabled(true);
 		userDao.saveUser(users);
-		if(userDao.saveUser(users)==true)
-	       {
+		if(userDao.saveUser(users)==true) {
+			
 	    	   attributes.addFlashAttribute("registered", "Registration Successful! Thank You.");
 	       
-	       }
-		
-	       else
-	       {
+	       } else {
 	        	attributes.addFlashAttribute("registered","Registration failed, please try again.");
 	       
 	       }
