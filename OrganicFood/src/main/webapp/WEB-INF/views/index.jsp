@@ -8,20 +8,10 @@
 <html lang="en">  
 <head> 
 	<script src="//code.jquery.com/jquery.min.js"></script>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-  
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>  
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
-  <title>Bootstrap Case</title>  
-  <meta charset="utf-8">  
-  <meta name="viewport" content="width=device-width, initial-scale=1">   -->
-  
-  
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">   
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">  
     
-</head>  
-
+</head> 
 <body>  
 
 <nav class="navbar navbar-inverse">  
@@ -39,30 +29,64 @@
     </form>
     <ul class="nav navbar-nav navbar-right">
     
-   <sec:authorize access="!isAuthenticated()">
       <li><a href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-   </sec:authorize>
+      <li>
+             <a href="yourCart" id="cart-popover" class="btn" data-placement="bottom" title="Your Cart"> Your Cart 
+             <span class="glyphicon glyphicon-shopping-cart"></span></a>
+      </li>
+      <li><a href="<c:url value="j_spring_security_logout" />">Logout</a>
+     </ul>
    
-   <sec:authorize access="isAuthenticated()">
-   <li><a href="<c:url value="j_spring_security_logout" />">Logout</a>
-</sec:authorize>
-   
-    </ul>
-    
 </nav>
 
- 					<c:forEach items="${PList}" var="product">
-									  <tr>
-											<td><c:out value="${product.pId}"/></td>
-											<td><c:out value="${product.name}"/></td>
-																				  </tr>
-									  </c:forEach>
+	<div class="container">
+		<c:forEach items="${Plist}" var="product">
+			<h2 style="color: red"> <c:out value="${product.name }" /> </h2>
+
+			<div class="col-xs-6 w3-animate-left">
+				<div class="img">
+				
+				<%-- <img alt="" class="thumbnail" src="/OrganicFood/image/imageDisplay?pId=${product.pId}">
+				 --%> 	<img src="OrganicFood/image/imageDisplay?pId=${product.id}" style="width: 100px;height: 100px"> 
+				 
+				 <div class="desc"> </div>
+				</div>
+			</div>
+
+			<div class="col-xs-4 ">
+				<div class="img">
+					<div class="desc">
+						<p>
+						
+						<div class="form-group">
+							<input type="text" class="form-control" value="${product.name}" readonly="readonly">
+						</div>
+
+						<div class="form-group">
+							<input type="text" class="form-control" value="Rs. ${product.price}" readonly="readonly">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" value="${product.description}" readonly="readonly">
+						</div>
+						<div>
+						
+						<a href="addtoCart/${product.id}" class="btn btn-primary">Add to Cart</a>
+						
+						</form>
+  
+						</div></div></div></div></c:forEach>
+						</div>
+		
+
+
+
+
+
+
 </body> 
 
 <jsp:include page="footer.jsp"></jsp:include>
  
 </html>  
-
-${error}
 

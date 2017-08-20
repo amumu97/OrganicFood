@@ -4,6 +4,8 @@ import java.util.Collection;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -40,12 +42,18 @@ public class HomeController {
 	@Autowired
 	ProductDao productDao;
 	
+	@Autowired
+	HttpSession session;
 	
+	Logger log=LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value="/")
 	public String landPage(@ModelAttribute("Users")Users users,BindingResult result,Model model,HttpSession session)
 	{
 		model.addAttribute("PList", productDao.getProducts());
+		
+		model.addAttribute("Plist",productDao.getProductList());
+		model.addAttribute("ProductList", true);
 		return "index";
 		
 	}
@@ -78,15 +86,18 @@ public class HomeController {
 	 
 	    @SuppressWarnings("unchecked")
 		@RequestMapping(value = "/login_session_attributes")
-		public String login_session_attributes( HttpSession session, Model model ) {
+		public String login_session_attributes( Model model ) {
 		 
+	    	log.info("Login Operation started");
 			String email = SecurityContextHolder.getContext().getAuthentication().getName();
+			log.info("Email"+email);
 			Users user = userDao.get(email);
-			session.setAttribute("userid", user.getId());
+		    session.setAttribute("userid", user.getId());
+			log.info("Userid"+session.getAttribute("userid"));
 			session.setAttribute("name", user.getEmail());
 			session.setAttribute("LoggedIn", "true");
 
-			Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+		Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 			String role="ROLE_USER";
 			for (GrantedAuthority authority : authorities) {
 				
@@ -97,7 +108,7 @@ public class HomeController {
 			    	 
 			     }else {
 			    	 
-			    	 session.setAttribute("Administrator", "true");
+			    	session.setAttribute("Administrator", "true");
 			    	 model.addAttribute("product",  new Product());
 			    	 model.addAttribute("ProductPageClicked", "true");
 			    	 model.addAttribute("supplierList",supplierDao.getSuppliers());
@@ -109,7 +120,7 @@ public class HomeController {
 			return "/index";  
 		
 		}
-//	
+	
 //	@RequestMapping(value="/userLogged")
 //	public String userLogged()
 //	{

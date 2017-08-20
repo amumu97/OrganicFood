@@ -19,7 +19,6 @@ public class CategoryController
 	CategoryDao categoryDao;
 	
 	@RequestMapping( value="/category",method=RequestMethod.GET)
-	
 	public String addPage(@ModelAttribute("category") Category category,Model model) {
 		model.addAttribute("category", new Category());
 		model.addAttribute("categoryList",categoryDao.getCategories());
@@ -35,13 +34,6 @@ public class CategoryController
 		mav.setViewName("categoryForm");
 		return mav;
 	}
-
-//	@RequestMapping(value ="Admin" )
-//	public ModelAndView AdminPage() {
-//		ModelAndView mv= new ModelAndView("/Admin");
-//		mv.addObject("showadminPage", "true");
-//		return mv;
-//	}
 	
 	
 }

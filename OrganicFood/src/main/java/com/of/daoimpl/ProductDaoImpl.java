@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session; 
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -29,7 +30,10 @@ public class ProductDaoImpl implements ProductDao
 	
 	public void insertProduct(Product product){
 		Session session= sessionFactory.openSession();
+		Transaction tx=session.beginTransaction();
 		session.persist(product);
+		tx.commit();
+		
 		
 	}
 
@@ -76,4 +80,19 @@ public class ProductDaoImpl implements ProductDao
 		return deletingProduct;
 	}
 
+	@SuppressWarnings("unchecked")
+	
+	@Transactional
+	public List<Product> getProductList() {
+
+		log.debug("starting of the method get");
+		log.info("trying to get product based on id:" );
+		
+		String hql = "from Product";
+		
+		log.info("the hsql query is :" + hql);
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<Product> list = (List<Product>)query.list();
+		return list;
+}
 }

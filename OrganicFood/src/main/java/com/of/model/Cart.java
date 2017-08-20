@@ -20,7 +20,13 @@ public class Cart implements Serializable {
 	@GeneratedValue
 	private int cartId;
 	private int cartProductId;
-	private int cartUserId;
+	private int userid;
+	public int getUserid() {
+		return userid;
+	}
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
 	private String cartProductName;	
 	
 	@Column(columnDefinition = "Integer default 1")
@@ -40,12 +46,7 @@ public class Cart implements Serializable {
 	public void setCartProductId(int cartProductId) {
 		this.cartProductId = cartProductId;
 	}
-	public int getCartUserId() {
-		return cartUserId;
-	}
-	public void setCartUserId(int cartUserId) {
-		this.cartUserId = cartUserId;
-	}
+	
 	public String getCartProductName() {
 		return cartProductName;
 	}

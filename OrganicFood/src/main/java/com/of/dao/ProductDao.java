@@ -14,4 +14,6 @@ public interface ProductDao {
 
 	public Product remove(int id);
 	
+	public List<Product>getProductList();
+	
 }

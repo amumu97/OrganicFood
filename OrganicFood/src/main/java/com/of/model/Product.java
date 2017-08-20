@@ -3,14 +3,13 @@ package com.of.model;
 import java.io.Serializable; 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile; 
+import org.springframework.stereotype.Component; 
 
 @Entity
 @Component
@@ -18,28 +17,26 @@ import org.springframework.web.multipart.MultipartFile;
 public class Product implements Serializable
 {
 	private static final long serialVersionUID = 1L; 
-	@Id
+	
+	@Id 
+	@GeneratedValue
 	private int pId; 
 	private String name;
 	private String description; 
 	private Float price;
 	private int stock;
-	//private int Quantity; 
-	private int category_id;
-	private int supplier_id; 
-	
-	
-	@Transient
-	MultipartFile image;
-	
-	
-	public MultipartFile getImage() {
-		return image;
+	private int quantity; 
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void setImage(MultipartFile image) {
-		this.image = image;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
+
+	private int category_id;
+	private int supplier_id; 
+
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="category_id", updatable = false, insertable = false, nullable = false)
@@ -49,6 +46,17 @@ public class Product implements Serializable
 	@JoinColumn(name="supplier_id", updatable = false, insertable = false, nullable = false)
 	private Supplier supplier;
 
+
+	@Lob
+	byte image[];
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+	
 	public int getId() {
 		return pId;
 	}
@@ -56,7 +64,7 @@ public class Product implements Serializable
 	public void setId(int pId) {
 		this.pId = pId;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -112,6 +120,12 @@ public class Product implements Serializable
 	public void setSupplier_id(int supplier_id) {
 		this.supplier_id = supplier_id;
 	}
+
+	public Product get(Integer itemId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }

@@ -1,6 +1,10 @@
 package com.of.daoimpl;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,20 +24,21 @@ public class UserDAOImpl implements UserDao {
 		return true;
 	}
 
+	
+	@SuppressWarnings("deprecation")
+	@Transactional
 	public Users get(String email) {
-		return null;
-	}
+		Criteria c = sessionFactory.getCurrentSession().createCriteria(Users.class);
+		c.add(Restrictions.eq("email", email));
 
-//	@Transactional
-//	public boolean delete(Users user) {
-//		try {
-//			sessionFactory.getCurrentSession().delete(user);
-//			return true;
-//		
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return false;
-//			
-//		}
-//	}
+		@SuppressWarnings("unchecked")
+		List<Users> listUser = (List<Users>) c.list();
+
+		if (listUser != null && !listUser.isEmpty()) {
+			return listUser.get(0);
+		} else {
+			return null;
+		}
+
+	}
 }

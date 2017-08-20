@@ -61,6 +61,20 @@ public class CartDaoImpl implements CartDao {
 	}
 	
 	@Transactional
+	public boolean saveorupdate(Cart cart) {
+		try {
+			sessionFactory.getCurrentSession().saveOrUpdate (cart);
+			return true;
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			return false;
+		
+		}
+	}
+	
+	@Transactional
 	@SuppressWarnings({ "unchecked", "deprecation" })
 	public List<Cart> list() {
 		
@@ -80,26 +94,20 @@ public class CartDaoImpl implements CartDao {
 		return list;
 	 
 	}
+	
 	@Transactional
-	@SuppressWarnings({ "unchecked", "deprecation" })
-	public Cart getproduct(int cartProductId,int cartUserId) {
-		String hql = "from"+" Cart"+" where Status='C'and cartUserId="+cartUserId+" and cartProductId="+cartProductId;
-		
+	public Cart getitem(int prodId, int userId) {
+		String hql = "from"+" Cart"+" where userid="+userId+" and cartProductId="+prodId;
 		@SuppressWarnings("rawtypes")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		List<Cart>listproduct=query.list();
-		
-		if(listproduct.isEmpty()){
-		
-			return null;
+		@SuppressWarnings("unchecked")
+		List<Cart> list = (List<Cart>) query.list();
+		if (list!= null && !list.isEmpty()) {
+			return list.get(0);
 		}
-		else
-		{
-			System.out.println("product");
-			return listproduct.get(0);
-		}
+		return null;
 	}
-	
+
 	@Transactional
 	public void pay(int userId) {
 		String hql="update Cart set status='P' where userid="+userId;	
@@ -111,39 +119,25 @@ public class CartDaoImpl implements CartDao {
 
 	@SuppressWarnings("deprecation")
 	@Transactional
-	public long CartPrice(int userId) {
+	public Double CartPrice(int userId) {
 		Criteria c=sessionFactory.getCurrentSession().createCriteria(Cart.class);
 		c.add(Restrictions.eq("userid", userId));
 		c.add(Restrictions.eq("status","C"));
-		c.setProjection(Projections.sum("price"));
-		Long l= (Long)c.uniqueResult();
+		c.setProjection(Projections.sum("cartPrice"));
+		Double l=(Double) c.uniqueResult();
 		return l;
 	}
 	
 	
 	@SuppressWarnings("deprecation")
 	@Transactional
-	public long cartsize(int userId) {
+	public long cartSize(int userId) {
 		Criteria c=sessionFactory.getCurrentSession().createCriteria(Cart.class);
 		c.add(Restrictions.eq("userid", userId));
 		c.add(Restrictions.eq("status","C"));
 		c.setProjection(Projections.count("userid"));
 		Long count=(Long) c.uniqueResult();
 		return count;
-	}
-	
-	@Transactional
-	public boolean saveorupdate(Cart cart) {
-		try {
-			sessionFactory.getCurrentSession().saveOrUpdate (cart);
-			return true;
-			
-		} catch (Exception e) {
-			
-			e.printStackTrace();
-			return false;
-		
-		}
 	}
 
 	
