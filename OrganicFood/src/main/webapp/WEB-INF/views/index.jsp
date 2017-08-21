@@ -28,14 +28,21 @@
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
     <ul class="nav navbar-nav navbar-right">
-    
+    <sec:authorize access="!isAuthenticated()">
       <li><a href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </sec:authorize>
+      <sec:authorize access="isAuthenticated()">
+    authenticated as <sec:authentication property="principal.username" /> 
+</sec:authorize>
       <li>
              <a href="yourCart" id="cart-popover" class="btn" data-placement="bottom" title="Your Cart"> Your Cart 
              <span class="glyphicon glyphicon-shopping-cart"></span></a>
       </li>
-      <li><a href="<c:url value="j_spring_security_logout" />">Logout</a>
+    <sec:authorize access="isAuthenticated()">
+                              <li> <a href="<c:url value="j_spring_security_logout" />">Logout</a></li>
+                              </sec:authorize>
+      </li>
      </ul>
    
 </nav>
@@ -48,7 +55,7 @@
 				<div class="img">
 				
 	
-				 	<img alt="" class="thumbnail" src="OrganicFood/image/imageDisplay?pId=${product.id}" style="width: 100px;height: 100px"> 
+				 	<img alt="" class="thumbnail" src="/OrganicFood/image/imageDisplay?pId=${product.id}" style="width: 100px;height: 100px"> 
 				 
 				 <div class="desc"> </div>
 				</div>
@@ -64,7 +71,7 @@
 						</div>
 
 						<div class="form-group">
-							<input type="text" class="form-control" value="Rs. ${product.price}" readonly="readonly">
+							<input type="text" class="form-control" value="Rs.${product.price}" readonly="readonly">
 						</div>
 						<div class="form-group">
 							<input type="text" class="form-control" value="${product.description}" readonly="readonly">
@@ -78,12 +85,6 @@
 						</div></div></div></div></c:forEach>
 						</div>
 		
-
-
-
-
-
-
 </body> 
 
 <jsp:include page="footer.jsp"></jsp:include>

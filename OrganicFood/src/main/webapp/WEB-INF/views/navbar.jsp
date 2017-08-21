@@ -2,6 +2,7 @@
 <%@ page isELIgnored="false" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -26,7 +27,13 @@
       <li class="addingCat"><a href="category">Category</a></li>
       <li class="addingSupp"><a href="supplier">Supplier</a></li>
       <li class="addingProd"><a href="product">Product</a></li>
-      <li><a href=" <c:url value="/logout"/>" > Logout </a></li>  
+      <sec:authorize access="isAuthenticated()">
+    authenticated as <sec:authentication property="principal.username" /> 
+</sec:authorize>
+       <sec:authorize access="isAuthenticated()">
+       <li> <a href="<c:url value="j_spring_security_logout" />">Logout</a></li>
+       </sec:authorize>
+       
       
     </ul>
     

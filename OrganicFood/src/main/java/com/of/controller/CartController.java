@@ -43,6 +43,15 @@ public class CartController {
 
 	 int quant;
 	 
+
+//	 @RequestMapping(value="/checkout")
+//	 public String checkoutPage (Model model)
+//		{
+//		 model.addAttribute("checkout", cartDao.pay(userid));
+//			return "checkout";
+//			
+//		}
+	 
 	 @RequestMapping(value="addtoCart/{id}")
 	    public String addProductToCart(@PathVariable("id") int productid, HttpSession session,Model model)
 	    { 		 
@@ -132,7 +141,7 @@ public class CartController {
 	  if(cartDao.cartSize((Integer) session.getAttribute("userid"))!=0){
 		   mv.addObject("cartprice", cartDao.CartPrice((Integer) session.getAttribute("userid")));
 	  }else{
-	 
+		  
 	  mv.addObject("emptycart","Sorry, your shopping cart is empty");
 	  }
 	  mv.addObject("UserClickedCart","true");
@@ -147,10 +156,10 @@ public class CartController {
 //	  return "Payment";
 //	 }
 //
-//	 @RequestMapping("pay")
-//	 public String payment(HttpSession session) {
-//	  cartDao.pay((Integer) session.getAttribute("userid"));
-//	  return "home";
-//	 }
+     @RequestMapping("pay")
+	 public String payment(HttpSession session) {
+	  cartDao.pay((Integer) session.getAttribute("userid"));
+	  return "home";
+     }
 	
 	}
