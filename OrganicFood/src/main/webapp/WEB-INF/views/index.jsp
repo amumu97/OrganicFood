@@ -40,15 +40,15 @@
    
 </nav>
 
-	<div class="container">
+<div class="container">
 		<c:forEach items="${Plist}" var="product">
 			<h2 style="color: red"> <c:out value="${product.name }" /> </h2>
 
 			<div class="col-xs-6 w3-animate-left">
 				<div class="img">
 				
-				<%-- <img alt="" class="thumbnail" src="/OrganicFood/image/imageDisplay?pId=${product.pId}">
-				 --%> 	<img src="OrganicFood/image/imageDisplay?pId=${product.id}" style="width: 100px;height: 100px"> 
+	
+				 	<img alt="" class="thumbnail" src="OrganicFood/image/imageDisplay?pId=${product.id}" style="width: 100px;height: 100px"> 
 				 
 				 <div class="desc"> </div>
 				</div>

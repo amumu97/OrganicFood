@@ -13,17 +13,19 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.of.daoimpl.*;
-import com.of.model.*;
 import com.of.dao.*;
-
+import com.of.daoimpl.CartDaoImpl;
+import com.of.daoimpl.CategoryDaoImpl;
+import com.of.daoimpl.ProductDaoImpl;
+import com.of.daoimpl.SupplierDaoImpl;
+import com.of.daoimpl.UserDAOImpl;
 
 @Configuration
 @ComponentScan("com.of")
 @EnableTransactionManagement
 public class DBConfig {
 
-	@Bean(name = "dataSource")
+	@Bean(name ="dataSource")
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");

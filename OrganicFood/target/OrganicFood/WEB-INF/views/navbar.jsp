@@ -36,13 +36,7 @@
       </div>
      <!--  <button type="submit" class="btn btn-default">Submit</button> -->
       </form>
-	    <ul class="nav navbar-nav navbar-right">
-	 <%--   <c:if test="${pageContext.request.userPrincipal.name!=null }">
-	   <li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
-	   <li><a href=" <c:url value="/logout"/>" > Logout </a></li>
-	   </c:if> --%>
-	    
-	    </ul>
+	    <ul class="nav navbar-nav navbar-right"> </ul>
     
   </div>
 </nav>

@@ -36,20 +36,20 @@ http://www.springframework.org/schema/security/spring-security.xsd">
         
         authentication-success-forward-url="/login_session_attributes"  />
         
-        <security:logout logout-success-url="/" logout-url="/j_spring_security_logout"/>
+       <security:logout logout-success-url="/" logout-url="/j_spring_security_logout"/>
        <security:csrf  disabled="true" />
        
-</security:http>	
+</security:http>
 
 <security:authentication-manager>
-    	<security:authentication-provider>
+<security:authentication-provider>
         	<security:jdbc-user-service
            		data-source-ref="dataSource"
-           		
            		authorities-by-username-query="SELECT email,role from user_details where email=?"
            		users-by-username-query="SELECT email,password,enabled from user_details where email=?" />
-    	</security:authentication-provider>
+</security:authentication-provider>
 </security:authentication-manager>
+	
 
 </beans:beans>
 

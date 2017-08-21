@@ -31,25 +31,25 @@
     
       <li><a href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li>
+             <a href="yourCart" id="cart-popover" class="btn" data-placement="bottom" title="Your Cart"> Your Cart 
+             <span class="glyphicon glyphicon-shopping-cart"></span></a>
+      </li>
+      <li><a href="<c:url value="j_spring_security_logout" />">Logout</a>
+     </ul>
    
-   
-   <li><a href="<c:url value="j_spring_security_logout" />">Logout</a>
-
-    </ul>
-    
 </nav>
 
-
-
-
-	<div class="container">
+<div class="container">
 		<c:forEach items="${Plist}" var="product">
 			<h2 style="color: red"> <c:out value="${product.name }" /> </h2>
 
 			<div class="col-xs-6 w3-animate-left">
 				<div class="img">
-				 	<img src="/OrganicFood/image/imageDisplay?pId=${product.id}"> 
 				
+				<img alt="" class="thumbnail" src="/OrganicFood/image/imageDisplay?pId=${product.pId}">
+				 	<img src="OrganicFood/image/imageDisplay?pId=${product.id}" style="width: 100px;height: 100px"> 
+				 
 				 <div class="desc"> </div>
 				</div>
 			</div>
@@ -72,11 +72,8 @@
 						<div>
 						
 						<a href="addtoCart/${product.id}" class="btn btn-primary">Add to Cart</a>
-<%-- 						
-						<form action="../addtoCart/${userid}/${product.id}" class="btn btn-primary" >
-							<input type="submit" value="Add to Cart" class="btn btn-primary">
- --%> 
-							</form>
+						
+						</form>
   
 						</div></div></div></div></c:forEach>
 						</div>
@@ -92,6 +89,4 @@
 <jsp:include page="footer.jsp"></jsp:include>
  
 </html>  
-
-${error}
 
