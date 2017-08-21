@@ -22,7 +22,7 @@ public class ImageController {
 private ProductDao productDao;
 
 
-@RequestMapping(value = "image/imageDisplay", method=RequestMethod.GET)
+@RequestMapping(value = "myImage/imageDisplay", method=RequestMethod.GET)
 public void showImage(@RequestParam("id") Integer pId, HttpServletResponse response, HttpServletRequest request) 
 		throws ServletException, IOException {
 	

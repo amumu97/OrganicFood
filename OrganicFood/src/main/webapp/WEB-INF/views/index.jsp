@@ -42,7 +42,7 @@
     <sec:authorize access="isAuthenticated()">
                               <li> <a href="<c:url value="j_spring_security_logout" />">Logout</a></li>
                               </sec:authorize>
-      </li>
+     
      </ul>
    
 </nav>
@@ -55,7 +55,7 @@
 				<div class="img">
 				
 	
-				 	<img alt="" class="thumbnail" src="/OrganicFood/image/imageDisplay?pId=${product.id}" style="width: 100px;height: 100px"> 
+				 	<img alt="" class="thumbnail" src="/OrganicFood/myImage/imageDisplay?id=${product.id}" style="width: 100px;height: 100px"> 
 				 
 				 <div class="desc"> </div>
 				</div>
