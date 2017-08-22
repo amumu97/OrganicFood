@@ -27,6 +27,8 @@ public interface CartDao {
 	public Double CartPrice(int userId);
 
 	public long cartSize(int userId);
+	
+	public Cart removeCart(int cart_id);
 
 	
 }

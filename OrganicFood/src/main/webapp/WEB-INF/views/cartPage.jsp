@@ -14,21 +14,62 @@
 	<link rel="stylesheet" href="<c:url value="/resources/css/cart.css"/>"> 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>CartPage</title>
-	
 </head>
-
 <body>
+<!-- NAVBAR START -->
 
+	<nav class="navbar navbar-inverse">
+	<div class="container-fluid"></div>
+
+	<div class="navbar-header">
+		<a class="navbar-brand" href="/">The Warehouse</a>
+	</div>
+
+	<form class="navbar-form navbar-left">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Search">
+		</div>
+		<button type="submit" class="btn btn-default">Submit</button>
+	</form>
+	<ul class="nav navbar-nav navbar-right">
+
+		<sec:authorize access="!isAuthenticated()">
+			<li><a href="register"><span
+					class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			<li><a href="login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+		</sec:authorize>
+
+		<sec:authorize access="isAuthenticated()">
+			 authenticated as <sec:authentication property="principal.username" />
+		</sec:authorize>
+		<li><a href="yourCart" id="cart-popover" class="btn"
+			data-placement="bottom" title="Your Cart"> Your Cart <span
+				class="glyphicon glyphicon-shopping-cart"></span></a></li>
+
+		<sec:authorize access="isAuthenticated()">
+			<li><a href="<c:url value="j_spring_security_logout" />">Logout</a></li>
+		</sec:authorize>
+
+	</ul>
+
+	</nav>
+	
+<!-- NAVBAR END -->
+
+<!-- YOUR CART BEGINS -->
 <h1 align="center">Your Cart</h1>
-${emptycart}
 <div class="container">
+
+<div class="col-sm-12 col-md-10 col-md-offset-1">
+
 	<table id="cart">
     				<thead>
 						<tr>
 							<th>Product</th>
-							<th>Price</th>
 							<th>Quantity</th>
-							<th>Update</th>
+							<th class="text-center">Price</th>
+							
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -36,37 +77,57 @@ ${emptycart}
 						<tr>
 							<td data-th="Product">
 								<div class="row">
-									<div class="col-sm-2 hidden-xs"><img src="" alt="..." class="img-responsive"/></div>
+									<div class="img-thumbnail, col-sm-2 hidden-xs"> <img src="/OrganicFood/myImage/imageDisplay?id=${product.id}" 
+									alt="Product Image" 
+									width="50" height="70">
+									</div>
+									
 									<div class="col-sm-10">
 										<h4 class="nomargin"><c:out value="${cart.cartProductName }"/></h4>
 									</div>
 								</div>
 							</td>
-							<td data-th="Price"><c:out value="${cart.cartPrice }"/></td>
-							<td data-th="Quantity"><c:out value="${cart.cartQuantity }"/></td>
-							<td data-th="Quantity"><c:out value=""/>
-								<c:url var="action" value="saveorupdate/${cart.cartId}"></c:url>
-		                        <form:form action="${action}" name="formID" modelAttribute="cart" method="post"> </form:form>
-							</td>
-							<td class="actions" data-th="Delete"> <a href="delete/${cart.cartId}">
-							<button class="btn btn-danger btn-sm"></button></a>								
-							</td>
+									
+					<!-- ITEM QUANTITY EDITABLE -->		
+							<td data-th="Quantity" class="col-md-1" style="text-align: center">
+	                        <input type="text" class="form-control" value="${cart.cartQuantity }" id="exampleInputEmail1">
+	                        <c:url var="action" value="saveorupdate/${cart.cartId}"></c:url>
+	                        <form:form action="${action}" name="formID" modelAttribute="cart" method="post"> </form:form>
+	                        </td>
+	                    
+					<!-- ITEM PRICE -->
+							<td data-th="Price"><strong><c:out value="${cart.cartPrice }"/></strong></td>
+									
+					<!-- REMOVE BUTTON START -->
+							<td class="col-md-1"> 
+								<a href="delete/${cart.cartId}" class="actions" data-th="Delete">
+								<button type="button" class="btn btn-danger">
+	                            <span class="glyphicon glyphicon-remove"></span> Remove </button></a>
+                            </td>
+                    <!-- REMOVE BUTTON END -->
 						</tr>
-						
 						</c:forEach>
+						<tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td><h5>Subtotal</h5></td>
+                        <td class="text-right"><h5><strong><c:out value="${cartPrice}"></c:out></strong></h5></td>
+                    </tr>
 					</tbody>
 					<tfoot>
-						<tr class="visible-xs">
-							<td class="text-center">Total</td>
-						</tr>
+					
 						<tr>
-							<td><a href="/" class="btn btn-warning"> Continue Shopping</a></td>
+							<td><a href="home" class="btn btn-warning"> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
-							<td class="hidden-xs text-center">Total:<c:out value="${cartPrice}"></c:out></td>
+							
 							<td><a href="/checkout" class="btn btn-success btn-block">Checkout</a></td>
 						</tr>
 					</tfoot>
 				</table>
-</div>
+			</div>
+<!-- YOUR CART ENDS -->
+
 </body>
 </html>
+

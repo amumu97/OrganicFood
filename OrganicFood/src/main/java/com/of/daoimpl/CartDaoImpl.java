@@ -152,5 +152,13 @@ public class CartDaoImpl implements CartDao {
 	}
 	return null;
 }
+@Transactional
+	public Cart removeCart(int cart_id) {
+	
+	Cart c=new Cart();
+	c.setCartId(cart_id);
+	sessionFactory.getCurrentSession().delete(c);
+	return c;
+	}
 	
 }

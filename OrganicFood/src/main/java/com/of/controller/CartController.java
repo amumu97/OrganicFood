@@ -1,6 +1,7 @@
 package com.of.controller;
 
 
+import javax.persistence.Id;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -25,10 +26,10 @@ import com.of.model.Users;
 @Controller
 public class CartController {
 	
-	@Autowired
+	 @Autowired
 	 private CartDao cartDao;
 	
-	@SuppressWarnings("unused")
+	 @SuppressWarnings("unused")
 	 @Autowired
 	 private CategoryDao categoryDao;
 	
@@ -94,7 +95,7 @@ public class CartController {
 	session.setAttribute("cartsize", cartDao.cartSize( (Integer) session.getAttribute("userid")));
 	System.out.println("operation over");
 	log.info("Cart Operation Completed!");
-	return "redirect:/Cart";
+	return "redirect:/cartPage";
 	  } 
 	  
 	 }
@@ -116,10 +117,10 @@ public class CartController {
 		}
 	 
 	 @RequestMapping(value="delete/{id}")
-	 public String delete(@ModelAttribute("cart") Cart cart,HttpSession session){
-	  cartDao.delete(cart);
-	  session.setAttribute("cartsize", cartDao.cartSize( (Integer) session.getAttribute("userid")));
-	  return "redirect:/Cart";
+	 public String delete(@ModelAttribute("cart") Cart cart,@PathVariable("id") int id, HttpSession session){
+	  cartDao.removeCart(id);
+	 // session.setAttribute("cartsize", cartDao.cartSize( (Integer) session.getAttribute("userid")));
+	  return "redirect:/cartPage";
 	 }
 	 
 	 @RequestMapping("editorder/{id}")
@@ -130,7 +131,7 @@ public class CartController {
 			cart.setCartPrice(quan * product.getPrice());
 			cartDao.saveorupdate(cart);
 			session.setAttribute("cartsize", cartDao.cartSize((Integer) session.getAttribute("userid")));
-			return "redirect:/Cart";
+			return "redirect:/cartPage";
 		}
 
 	 @RequestMapping(value="/Cart")

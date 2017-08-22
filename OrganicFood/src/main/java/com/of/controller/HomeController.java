@@ -51,15 +51,11 @@ public class HomeController {
 	public String landPage(@ModelAttribute("Users")Users users,BindingResult result,Model model,HttpSession session)
 	{
 		model.addAttribute("PList", productDao.getProducts());
-		
 		model.addAttribute("Plist",productDao.getProductList());
 		model.addAttribute("ProductList", true);
 		return "index";
 		
 	}
-
-	
-
 	@RequestMapping(value="/register")
 	public String registrationPage(Model model)
 	{
@@ -153,5 +149,20 @@ public class HomeController {
 		
 		return "redirect:/login";
 		}
+	
+
+	@RequestMapping(value="/home")
+	public String redirect()
+	{
+		
+
+		return "redirect:/";
+		
+	}
+	
+
+
+	
+	
 }
 	
