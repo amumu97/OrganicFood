@@ -15,6 +15,15 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>CartPage</title>
 </head>
+<style>
+
+.nav{
+	padding-right: 10px;
+	padding-left: 10px;
+
+}
+
+</style>
 <body>
 <!-- NAVBAR START -->
 
@@ -40,8 +49,9 @@
 		</sec:authorize>
 
 		<sec:authorize access="isAuthenticated()">
-			 authenticated as <sec:authentication property="principal.username" />
+		<li><a href="home"><span class="glyphicon glyphicon-user"> Welcome:<sec:authentication property="principal.username"/></span></a></li>
 		</sec:authorize>
+		
 		<li><a href="yourCart" id="cart-popover" class="btn"
 			data-placement="bottom" title="Your Cart"> Your Cart <span
 				class="glyphicon glyphicon-shopping-cart"></span></a></li>
@@ -77,7 +87,7 @@
 						<tr>
 							<td data-th="Product">
 								<div class="row">
-									<div class="img-thumbnail, col-sm-2 hidden-xs"> <img src="/OrganicFood/myImage/imageDisplay?id=${product.id}" 
+									<div class="img-thumbnail, col-sm-2 hidden-xs"> <img src="/OrganicFood/myImage/imageDisplay?id=${cart.cartProductId}" 
 									alt="Product Image" 
 									width="50" height="70">
 									</div>
@@ -96,7 +106,7 @@
 	                        </td>
 	                    
 					<!-- ITEM PRICE -->
-							<td data-th="Price"><strong><c:out value="${cart.cartPrice }"/></strong></td>
+							<td data-th="Price"><strong><c:out value="Rs.${cart.cartPrice }"/></strong></td>
 									
 					<!-- REMOVE BUTTON START -->
 							<td class="col-md-1"> 
@@ -107,6 +117,7 @@
                     <!-- REMOVE BUTTON END -->
 						</tr>
 						</c:forEach>
+						<hr>
 						<tr>
                         <td>   </td>
                         <td>   </td>
@@ -114,6 +125,7 @@
                         <td><h5>Subtotal</h5></td>
                         <td class="text-right"><h5><strong><c:out value="${cartPrice}"></c:out></strong></h5></td>
                     </tr>
+                    
 					</tbody>
 					<tfoot>
 					
@@ -121,11 +133,12 @@
 							<td><a href="home" class="btn btn-warning"> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							
-							<td><a href="/checkout" class="btn btn-success btn-block">Checkout</a></td>
+							<td><a href="checkout" class="btn btn-success btn-block">Checkout</a></td>
 						</tr>
 					</tfoot>
 				</table>
 			</div>
+			<hr>
 <!-- YOUR CART ENDS -->
 
 </body>

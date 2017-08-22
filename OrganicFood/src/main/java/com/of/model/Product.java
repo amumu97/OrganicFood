@@ -24,7 +24,7 @@ public class Product implements Serializable
 	private String name;
 	private String description; 
 	private Float price;
-	private int stock;
+	
 	private int quantity; 
 	public int getQuantity() {
 		return quantity;
@@ -41,7 +41,7 @@ public class Product implements Serializable
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="category_id", updatable = false, insertable = false, nullable = false)
 	private Category category;
-
+	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="supplier_id", updatable = false, insertable = false, nullable = false)
 	private Supplier supplier;
@@ -87,14 +87,6 @@ public class Product implements Serializable
 
 	public void setPrice(Float price) {
 		this.price = price;
-	}
-
-	public int getStock() {
-		return stock;
-	}
-
-	public void setStock(int stock) {
-		this.stock = stock;
 	}
 
 	public Category getCategory() {
