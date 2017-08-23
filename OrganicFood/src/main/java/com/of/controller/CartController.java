@@ -129,24 +129,31 @@ public class CartController {
 		return "home";
 	}
 
-	 @RequestMapping(value="/next")
+	 @RequestMapping(value="/checkout")
 	 public String checkoutPage (Model model){
 		 model.addAttribute("cart", new Cart());
 		 model.addAttribute("cartList", cartDao.list()); 
 		 return "checkout";
 	 }
 	 
-	 @RequestMapping(value="/bill")
+	 @RequestMapping(value="/billing")
 	 public String checkout2Page (Model model){
 		 model.addAttribute("cart", new Cart());
 		 model.addAttribute("cartList", cartDao.list()); 
 		 return "checkout2";
 	 }
 
-	 @RequestMapping(value="/checkout")
+	 @RequestMapping(value="/payment")
 	 public String checkout3Page (Model model){
 		 model.addAttribute("cart", new Cart());
 		 model.addAttribute("cartList", cartDao.list()); 
 		 return "checkout3";
+	 }
+	 
+	 @RequestMapping(value="/fini")
+	 public String checkoutSuccess (Model model){
+		 model.addAttribute("cart", new Cart());
+		 model.addAttribute("cartList", cartDao.list()); 
+		 return "checkoutFin";
 	 }
 }

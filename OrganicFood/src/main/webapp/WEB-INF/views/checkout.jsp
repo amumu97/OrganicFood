@@ -73,14 +73,14 @@
 						
 						<div class="shopping_cart">
 							<form class="form-horizontal" role="form" action="" method="post" id="payment-form">
-								<div class="panel-group" id="accordion">
+								<div class="panel-group">
 								
 								<!-- CHECKOUT PROCESS 1 -->
 						
 									<div class="panel panel-default">
 										<div class="panel-heading">
 											<h4 class="panel-title">
-												<a data-toggle="collapse" data-parent="#accordion"
+												<a data-toggle="collapse"
 													href="#collapseOne">Review Your Order</a>
 											</h4>
 										</div>
@@ -131,16 +131,6 @@
 																<td data-th="Price"><strong><c:out
 																			value="Rs.${cart.cartPrice }" /></strong></td>
 
-																<!-- REMOVE BUTTON START -->
-																<td class="col-md-1"><a
-																	href="delete/${cart.cartId}" class="actions"
-																	data-th="Delete">
-																		<button type="button" class="btn btn-danger">
-																			<span class="glyphicon glyphicon-remove"></span>
-																			Remove
-																		</button>
-																</a></td>
-																<!-- REMOVE BUTTON END -->
 															</tr>
 														</c:forEach>
 														<hr>
@@ -158,11 +148,11 @@
 													<tfoot>
 
 														<tr>
-															<!-- <td><a href="home" class="btn btn-warning">
-																	Continue Shopping</a></td>
-															<td colspan="2" class="hidden-xs"></td> -->
-
-															<td><a href="next"
+														   <td><a href="yourCart"
+															class="btn btn-success btn-block"> Go Back</a></td>
+														   <td colspan="2" class="hidden-xs"></td>
+														
+															<td><a href="billing"
 																class="btn btn-success btn-block">Continue</a></td>
 														</tr>
 													</tfoot>
