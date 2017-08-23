@@ -42,13 +42,7 @@ public class CartController {
 	public static final Logger log = LoggerFactory.getLogger(CartController.class);
 
 	int quant;
-
-	 @RequestMapping(value="/checkout")
-	 public String checkoutPage (Model model){
-		 
-		 return "checkout";
-	 }
-
+	
 	@RequestMapping(value = "addtoCart/{id}")
 	public String addProductToCart(@PathVariable("id") int productid, HttpSession session, Model model) {
 		log.info("User Id in session:" + session.getAttribute("userid"));
@@ -135,4 +129,24 @@ public class CartController {
 		return "home";
 	}
 
+	 @RequestMapping(value="/next")
+	 public String checkoutPage (Model model){
+		 model.addAttribute("cart", new Cart());
+		 model.addAttribute("cartList", cartDao.list()); 
+		 return "checkout";
+	 }
+	 
+	 @RequestMapping(value="/bill")
+	 public String checkout2Page (Model model){
+		 model.addAttribute("cart", new Cart());
+		 model.addAttribute("cartList", cartDao.list()); 
+		 return "checkout2";
+	 }
+
+	 @RequestMapping(value="/checkout")
+	 public String checkout3Page (Model model){
+		 model.addAttribute("cart", new Cart());
+		 model.addAttribute("cartList", cartDao.list()); 
+		 return "checkout3";
+	 }
 }
