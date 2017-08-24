@@ -100,11 +100,11 @@ public class CartController {
 
 	}
 
-	@RequestMapping(value = "update/{id}")
-	public String update(@ModelAttribute("cart") Cart cart) {
-		cartDao.update(cart);
-		return "redirect:/Cart";
-	}
+//	@RequestMapping(value = "update/{id}")
+//	public String update(@ModelAttribute("cart") Cart cart) {
+//		cartDao.update(cart);
+//		return "redirect:/Cart";
+//	}
 
 	@RequestMapping(value = "delete/{id}")
 	public String delete(@ModelAttribute("cart") Cart cart, @PathVariable("id") int id, HttpSession session) {
@@ -123,11 +123,11 @@ public class CartController {
 		return "redirect:/cartPage";
 	}
 
-	@RequestMapping("/pay")
-	public String payment(HttpSession session) {
-		cartDao.pay((Integer) session.getAttribute("userid"));
-		return "home";
-	}
+//	@RequestMapping("/pay")
+//	public String payment(HttpSession session) {
+//		cartDao.pay((Integer) session.getAttribute("userid"));
+//		return "home";
+//	}
 
 	 @RequestMapping(value="/checkout")
 	 public String checkoutPage (Model model){

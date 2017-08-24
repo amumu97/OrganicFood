@@ -108,25 +108,25 @@ public class CartDaoImpl implements CartDao {
 		return null;
 	}
 
-	@Transactional
-	public void pay(int userId) {
-		String hql="update Cart set status='P' where userid="+userId;	
-		@SuppressWarnings("rawtypes")
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.executeUpdate();
-	}
+//	@Transactional
+//	public void pay(int userId) {
+//		String hql="update Cart set status='P' where userid="+userId;	
+//		@SuppressWarnings("rawtypes")
+//		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+//		query.executeUpdate();
+//	}
 	
 
-	@SuppressWarnings("deprecation")
-	@Transactional
-	public Double CartPrice(int userId) {
-		Criteria c=sessionFactory.getCurrentSession().createCriteria(Cart.class);
-		c.add(Restrictions.eq("userid", userId));
-		c.add(Restrictions.eq("status","C"));
-		c.setProjection(Projections.sum("cartPrice"));
-		Double l=(Double) c.uniqueResult();
-		return l;
-	}
+//	@SuppressWarnings("deprecation")
+//	@Transactional
+//	public Double CartPrice(int userId) {
+//		Criteria c=sessionFactory.getCurrentSession().createCriteria(Cart.class);
+//		c.add(Restrictions.eq("userid", userId));
+//		c.add(Restrictions.eq("status","C"));
+//		c.setProjection(Projections.sum("cartPrice"));
+//		Double l=(Double) c.uniqueResult();
+//		return l;
+//	}
 	
 	
 	@SuppressWarnings("deprecation")
