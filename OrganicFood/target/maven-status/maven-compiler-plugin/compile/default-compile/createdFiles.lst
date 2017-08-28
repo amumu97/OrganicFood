@@ -17,5 +17,6 @@ com/of/dao/CategoryDao.class
 com/of/daoimpl/SupplierDaoImpl.class
 com/of/controller/CartController.class
 com/of/model/Product.class
+com/of/config/DBConfig.class
 com/of/controller/ProductController.class
 com/of/dao/ProductDao.class

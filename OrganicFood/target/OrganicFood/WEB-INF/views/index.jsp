@@ -3,22 +3,25 @@
 <%@ page isELIgnored="false"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
 <head>
 <script src="//code.jquery.com/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <style>
 
 body {
 	background: #f1f1f1;
 }
 
+.nav{
+	padding-right: 10px;
+	padding-left: 10px;
+
+}
 .product-item {
 	padding: 15px;
 	background: #fff;
@@ -148,18 +151,20 @@ body {
 	</form>
 	<ul class="nav navbar-nav navbar-right">
 
+		<sec:authorize access="isAuthenticated()">
+		<li><a href="home"><span class="glyphicon glyphicon-user"> Welcome:<sec:authentication property="principal.username"/></span></a></li>
+		</sec:authorize>
+		
 		<sec:authorize access="!isAuthenticated()">
-			<li><a href="register"><span
-					class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			<li><a href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 			<li><a href="login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
 		</sec:authorize>
 
 		<sec:authorize access="isAuthenticated()">
-			 authenticated as <sec:authentication property="principal.username" />
-		</sec:authorize>
 		<li><a href="yourCart" id="cart-popover" class="btn"
 			data-placement="bottom" title="Your Cart"> Your Cart <span
 				class="glyphicon glyphicon-shopping-cart"></span></a></li>
+		</sec:authorize>
 
 		<sec:authorize access="isAuthenticated()">
 			<li><a href="<c:url value="j_spring_security_logout" />">Logout</a></li>
@@ -173,8 +178,9 @@ body {
 
 <!-- NEW CODE START -->
 <div class="container">
-<c:forEach items="${Plist}" var="product">
     <div class="row">
+    
+<c:forEach items="${Plist}" var="product">
         <div class="col-md-3">
             <div class="product-item">
               <div class="pi-img-wrapper">
@@ -200,62 +206,13 @@ body {
               <div class="sticker sticker-new"></div>
             </div>
         </div>
-    </div>
-</c:forEach>
+   </c:forEach> </div>
+
 </div>
 <br>
 <br>
 
 <!-- NEW CODE END -->
-
-<!-- PRODUCT LISTING START -->
-	<%-- <div class="container">
-		<c:forEach items="${Plist}" var="product">
-			<h2 style="color: red">
-				<c:out value="${product.name }" />
-			</h2>
-
-			<div class="col-xs-6 w3-animate-left">
-				<div class="img">
-					<img alt="" class="thumbnail"
-						src="/OrganicFood/myImage/imageDisplay?id=${product.id}"
-						style="width: 100px; height: 100px">
-
-					<div class="desc"></div>
-				</div>
-			</div>
-
-			<div class="col-xs-4 ">
-				<div class="img">
-					<div class="desc">
-						<p>
-						<div class="form-group">
-							<input type="text" class="form-control" value="${product.name}"
-								readonly="readonly">
-						</div>
-
-						<div class="form-group">
-							<input type="text" class="form-control"
-								value="Rs.${product.price}" readonly="readonly">
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control"
-								value="${product.description}" readonly="readonly">
-						</div>
-						<div>
-
-							<a href="addtoCart/${product.id}" class="btn btn-primary">Add
-								to Cart</a>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</c:forEach>
-	</div>
- --%>
-<!-- PRODUCT LISTING END -->
-
 </body>
 
 <jsp:include page="footer.jsp"></jsp:include>

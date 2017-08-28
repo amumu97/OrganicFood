@@ -116,20 +116,7 @@ public class HomeController {
 			return "/index";  
 		
 		}
-	
-//	@RequestMapping(value="/userLogged")
-//	public String userLogged()
-//	{
-//		return "redirect:/index";
-//		
-//	}
-//	
-//	@RequestMapping(value="/error")
-//	public String errorPage()
-//	{
-//		return "error";
-//		
-//	}
+
 	
 	@RequestMapping(value="/saveUser",method = RequestMethod.POST)
 	public String addUser(@ModelAttribute("users")Users users, RedirectAttributes attributes)

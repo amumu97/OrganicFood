@@ -18,7 +18,8 @@
   
   body
 {
-    background: url('http://farm3.staticflickr.com/2832/12303719364_c25cecdc28_b.jpg') fixed;
+    background: url('http://www.birds.com/wp-content/uploads/home/bird4.jpg') black ;
+    /* url('http://farm3.staticflickr.com/2832/12303719364_c25cecdc28_b.jpg') */ 
     background-size: cover;
     padding: 0;
     margin: 0;
@@ -57,7 +58,7 @@ form.login input[type="text"], form.login input[type="password"]
 {
     width: 100%;
     margin: 0;
-    padding: 5px 10px;
+    padding: 5px 10px;   
     background: 0;
     border: 0;
     border-bottom: 1px solid #FFFFFF;
@@ -240,57 +241,19 @@ form.login a:hover
 
 	</nav>
 
-
-   <%--      <h3>Hi! To Register, Enter your details: </h3>
-        <form:form method="POST" action="saveUser" modelAttribute="users" >
-	<div> 
-             <table>
-<tr>
-<td><form:label path="name">Name</form:label></td>
-
-<td><form:input path="name"/></td>
-</tr>
-<tr>
-<td><form:label path="email">Email</form:label></td>
-<td><form:input path="email"/></td>
-</tr>
-
-
-<tr>
-<td><form:label path="address">Address</form:label></td>
-<td><form:input path="address"/></td>
-</tr>
-
-
-<tr>
-<td><form:label path="password">Password</form:label></td>
-<td><form:input path="password"/></td>
-</tr>
-<tr>
-<td><input type="submit" value="Submit"/></td>
-</tr>
-</table>
-	</div>
-        </form:form> --%>
-
 <!-- ADDED FORM STARTS HERE -->
 
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-           <!--  <div class="pr-wrap">
-                <div class="pass-reset">
-                    <label>Enter the email you signed up with</label>
-                    <input type="email" placeholder="Email" />
-                    <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
-                </div>
-            </div> -->
+           
             <div class="wrap">
                 <p class="form-title">Sign Up</p>
-                <form class="login">
-                <input type="text" placeholder="Username" />
-                <input type="text" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <form:form class="login" action="saveUser" modelAttribute="users">
+                <form:input path="name" placeholder="Username"/>
+                <form:input path="address" placeholder="Address" />
+                <form:input path="email" placeholder="Email" />
+                <form:input path="password" type="password" placeholder="Password"/>
                 <input type="submit" value="Sign Up" class="btn btn-success btn-sm" />
                 <div class="remember-forgot">
                     <div class="row">
@@ -299,12 +262,9 @@ form.login a:hover
                                 <label> <input type="checkbox" /> Remember Me </label>
                             </div>
                         </div>
-                        <!-- <div class="col-md-6 forgot-pass-content">
-                            <a href="javascription:void(0)" class="forgot-pass">Forgot Password</a>
-                        </div> -->
                     </div>
                 </div>
-                </form>
+                </form:form>
             </div>
         </div>
     </div>

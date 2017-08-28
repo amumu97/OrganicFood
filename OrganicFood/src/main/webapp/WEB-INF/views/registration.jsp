@@ -7,7 +7,7 @@
 
 <html>
 <head>
- <title>Bootstrap Case</title>  
+ <title>Registration</title>  
   <meta charset="utf-8">  
   <meta name="viewport" content="width=device-width, initial-scale=1">  
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">  
@@ -17,22 +17,30 @@
   <style> 
   
   body
+  
+.nav{
+		padding-right: 10px;
+		padding-left: 10px;
+	
+}
+
 {
-    background: url('http://farm3.staticflickr.com/2832/12303719364_c25cecdc28_b.jpg') fixed;
+    background: url('https://static.pexels.com/photos/109277/pexels-photo-109277.jpeg') black ;
     background-size: cover;
-    padding: 0;
+    padding: 0px;
     margin: 0;
 }
 
 .wrap
 {
-    width: 100%;
+    
     height: 100%;
     min-height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 99;
+    padding: 60px;
 }
 
 p.form-title
@@ -41,7 +49,7 @@ p.form-title
     font-size: 20px;
     font-weight: 600;
     text-align: center;
-    color: #FFFFFF;
+    color: 	#696969;
     margin-top: 5%;
     text-transform: uppercase;
     letter-spacing: 4px;
@@ -67,7 +75,7 @@ form.login input[type="text"], form.login input[type="password"]
     font-weight: 400;
     letter-spacing: 1px;
     margin-bottom: 5px;
-    color: #FFFFFF;
+    color: 	#000000;
     outline: 0;
 }
 
@@ -104,7 +112,7 @@ form.login label, form.login a
 {
     font-size: 12px;
     font-weight: 400;
-    color: #FFFFFF;
+    color: 	#000000;
 }
 
 form.login a
@@ -115,6 +123,13 @@ form.login a
 form.login a:hover
 {
     color: #2ecc71;
+}
+
+.jumbotron 
+{
+	background-color: rgba(255,255,255,0.75);
+	padding-bottom: 80px;
+	
 }
 
 .pr-wrap
@@ -128,84 +143,16 @@ form.login a:hover
     z-index: 999;
     display: none;
 }
-
-.show-pass-reset
-{
-    display: block !important;
-}
-
-.pass-reset
-{
-    margin: 0 auto;
-    width: 250px;
-    position: relative;
-    margin-top: 22%;
-    z-index: 999;
-    background: #FFFFFF;
-    padding: 20px 15px;
-}
-
-.pass-reset label
-{
-    font-size: 12px;
-    font-weight: 400;
-    margin-bottom: 15px;
-}
-
-.pass-reset input[type="email"]
-{
-    width: 100%;
-    margin: 5px 0 0 0;
-    padding: 5px 10px;
-    background: 0;
-    border: 0;
-    border-bottom: 1px solid #000000;
-    outline: 0;
-    font-style: italic;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-    color: #000000;
-    outline: 0;
-}
-
-.pass-reset input[type="submit"]
-{
-    width: 100%;
-    border: 0;
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 500;
-    margin-top: 10px;
-    outline: 0;
-    cursor: pointer;
-    letter-spacing: 1px;
-}
-
-.pass-reset input[type="submit"]:hover
-{
-    transition: background-color 0.5s ease;
-}
-.posted-by
-{
-    position: absolute;
-    bottom: 26px;
-    margin: 0 auto;
-    color: #FFF;
-    background-color: rgba(0, 0, 0, 0.66);
-    padding: 10px;
-    left: 45%;
-}
   
-  </style>
-  
+</style>
   
 </head>
 
 <body>
 
-<nav class="navbar navbar-inverse">
+<!-- NAVBAR BEGINS -->
+
+    <nav class="navbar navbar-inverse">
 	<div class="container-fluid"></div>
 
 	<div class="navbar-header">
@@ -229,8 +176,12 @@ form.login a:hover
 		<sec:authorize access="isAuthenticated()">
 			 authenticated as <sec:authentication property="principal.username" />
 		</sec:authorize>
+		
+		<sec:authorize access="isAuthenticated()">
 		<li><a href="yourCart" id="cart-popover" class="btn" data-placement="bottom" title="Your Cart"> Your Cart <span
 		class="glyphicon glyphicon-shopping-cart"></span></a></li>
+		</sec:authorize>
+		
 		
 		<sec:authorize access="isAuthenticated()">
 			<li><a href="<c:url value="j_spring_security_logout" />">Logout</a></li>
@@ -239,55 +190,19 @@ form.login a:hover
 	</ul>
 
 	</nav>
+	
+<!-- NAVBAR ENDS -->
 
-
-   <%--      <h3>Hi! To Register, Enter your details: </h3>
-        <form:form method="POST" action="saveUser" modelAttribute="users" >
-	<div> 
-             <table>
-<tr>
-<td><form:label path="name">Name</form:label></td>
-
-<td><form:input path="name"/></td>
-</tr>
-<tr>
-<td><form:label path="email">Email</form:label></td>
-<td><form:input path="email"/></td>
-</tr>
-
-
-<tr>
-<td><form:label path="address">Address</form:label></td>
-<td><form:input path="address"/></td>
-</tr>
-
-
-<tr>
-<td><form:label path="password">Password</form:label></td>
-<td><form:input path="password"/></td>
-</tr>
-<tr>
-<td><input type="submit" value="Submit"/></td>
-</tr>
-</table>
-	</div>
-        </form:form> --%>
-
-<!-- ADDED FORM STARTS HERE -->
+<!-- REGISTRATION FORM BEGINS -->
 
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-           <!--  <div class="pr-wrap">
-                <div class="pass-reset">
-                    <label>Enter the email you signed up with</label>
-                    <input type="email" placeholder="Email" />
-                    <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
-                </div>
-            </div> -->
+           
             <div class="wrap">
+            <div class="jumbotron">
                 <p class="form-title">Sign Up</p>
-                <form:form class="login" action="saveUser" modelAttribute="users">
+                <form:form class="login " action="saveUser" modelAttribute="users">
                 <form:input path="name" placeholder="Username"/>
                 <form:input path="address" placeholder="Address" />
                 <form:input path="email" placeholder="Email" />
@@ -300,21 +215,20 @@ form.login a:hover
                                 <label> <input type="checkbox" /> Remember Me </label>
                             </div>
                         </div>
-                        <!-- <div class="col-md-6 forgot-pass-content">
-                            <a href="javascription:void(0)" class="forgot-pass">Forgot Password</a>
-                        </div> -->
                     </div>
                 </div>
                 </form:form>
+           </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- REGISTRATION FORM ENDS -->
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
 
-    </body>
+</body>
 
 <jsp:include page="footer.jsp"/>
 </html>

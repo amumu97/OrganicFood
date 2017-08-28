@@ -22,6 +22,9 @@ body {
 	padding-left: 10px;
 
 }
+
+
+
 .product-item {
 	padding: 15px;
 	background: #fff;

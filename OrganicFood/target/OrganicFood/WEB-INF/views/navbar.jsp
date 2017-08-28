@@ -7,10 +7,20 @@
 
 <html>
 <head>
-<script src="//code.jquery.com/jquery.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>navbar</title>
+	<script src="//code.jquery.com/jquery.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>navbar</title>
+	<style>
+	
+	.nav{
+		padding-right: 10px;
+		padding-left: 10px;
+	
+	}
+	
+	</style>
 </head>
+
 <body>
 
 
@@ -28,8 +38,9 @@
       <li class="addingSupp"><a href="supplier">Supplier</a></li>
       <li class="addingProd"><a href="product">Product</a></li>
       <sec:authorize access="isAuthenticated()">
-    authenticated as <sec:authentication property="principal.username" /> 
-</sec:authorize>
+		<li><a href="home"><span class="glyphicon glyphicon-user"> Welcome:<sec:authentication property="principal.username"/></span></a></li>
+	  </sec:authorize>
+
        <sec:authorize access="isAuthenticated()">
        <li> <a href="<c:url value="j_spring_security_logout" />">Logout</a></li>
        </sec:authorize>

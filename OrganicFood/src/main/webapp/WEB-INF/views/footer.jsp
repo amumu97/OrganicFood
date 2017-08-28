@@ -5,11 +5,44 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>footer</title>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
 </head>
 
 <style> 
 
-		.footer-bs {
+ footer{
+	background-color:#222222;
+	width: 100%;
+    bottom: 0;
+	position: fixed;
+}
+        
+footer .menu li a{
+	font-family:Roboto;
+	color:#b1aca1;
+	padding:10px;
+	text-decoration:none;
+}
+
+footer .menu li a:hover{
+	color:#7dabdb;
+}
+
+.fa.fa-facebook , .fa.fa-dropbox, .fa.fa-flickr , .fa.fa-github , .fa.fa-linkedin ,.fa,fa-tumblr ,.fa.fa-google-plus , .fa.fa-tumblr {
+	color:#b1aca1;
+	font-size:20px;
+	padding:10px;
+	margin-bottom:50px;
+}
+
+.fa.fa-facebook:hover , .fa.fa-dropbox:hover , .fa.fa-flickr:hover  , .fa.fa-github:hover  , .fa.fa-linkedin:hover  ,.fa,fa-tumblr:hover  ,.fa.fa-google-plus:hover  , .fa.fa-tumblr:hover  {
+	color:#6794c2;
+} 
+
+ 
+		/* .footer-bs {
 		    background-color: #3c3d41;
 			padding: 60px 40px;
 			color: rgba(255,255,255,1.00);
@@ -59,17 +92,91 @@
 		
 		@media (min-width: 768px) {
 			.footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-left:solid 1px rgba(255,255,255,0.10); }
-		}
+		} */
 
 </style>
 
 <body>
 
+ <!-- Footer 1 - Left Social/Right Menu -->
+    
+     <footer>
+     <div class="container">
+       <div class="row text-center">
+       
+                 <div class="col-md-6 col-sm-6 col-xs-12">
+                  <ul class="list-inline">
+                             
+                               <li>
+                                    <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+                               </li>
+                               
+                               <li>
+                                    <a href="#"><i class="fa fa-dropbox fa-2x"></i></a>
+                               </li>
+                               
+                               <li>
+                                    <a href="#"><i class="fa fa-flickr fa-2x"></i></a> 
+                               </li>
+                              
+                               <li>
+                                    <a href="#"><i class="fa fa-github fa-2x"></i></a>
+                               </li>
+                                
+                               <li>
+                                    <a href="#"><i class="fa fa-linkedin fa-2x"></i></a>
+                               </li>
+                               
+                               <li>
+                                    <a href="#"><i class="fa fa-tumblr fa-2x"></i></a>
+                               </li>
+                                
+                               <li>
+                                    <a href="#"><i class="fa fa-google-plus fa-2x"></i></a>
+                              </li>
+                              
+                     </ul>
+                   </div>
+           
+                 <div class="col-md-6 col-sm-6 col-xs-12">
+                  <ul class="menu list-inline">
+                             
+                         <li>
+                            <a href="#">Home</a>
+                          </li>
+                               
+                          <li>
+                             <a href="#">About</a>
+                          </li>
+                               
+                          <li>
+                            <a href="#">Blog</a>
+                          </li>
+                               
+                          <li>
+                             <a href="#">Gallery </a>
+                          </li>
+                               
+                          <li>
+                            <a href="#">Contact</a>
+                         </li>
+               
+                 </ul>
+               </div>
+           
+           
+           </div> 
+        </div>
+    </footer>
+     
+    <!-- End -->
 
-		
+
+
+
+		<!-- 
 		<div class="container">
 		    <section style="height:80px;"></section>
-		    <!----------- Footer ------------>
 		    <footer class="footer-bs">
 		        <div class="row">
 		        	<div class="col-md-3 footer-brand animated fadeInLeft">
@@ -83,17 +190,15 @@
 		                        <li><a href="#">About Us</a></li>
 		                        <li><a href="#">Contacts</a></li>
 		                        <li><a href="#">Terms & Condition</a></li>
-		                        <li><a href="#">Privacy Policy</a></li>
 		                    </ul>
 		                </div>
 		            	<h4>Trending </h4>
 		            	<div class="col-md-6">
 		                    <ul class="list">
+		                    
 		                        <li><a href="#">Today's Deals</a></li>
 		                        <li><a href="#">My Top 5 Cake Recipes: nina34</a></li>
 		                        <li><a href="#">Dried Fruit</a></li>
-		                        <li><a href="#">Coffee Mug Cakes: heathCliff</a></li>
-		                        <li><a href="#">Pulses & Grains</a></li>
 		                    </ul>
 		                </div>
 		            </div>
@@ -114,15 +219,15 @@
 		                      <span class="input-group-btn">
 		                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
 		                      </span>
-		                    </div><!-- /input-group -->
+		                    </div>/input-group
 		                 </p>
 		            </div>
 		        </div>
 		    </footer>
 		    
 		</div>
-		
-
+		 -->
+ 
 
 </body>
 </html>

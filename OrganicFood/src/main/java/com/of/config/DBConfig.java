@@ -56,7 +56,6 @@ public class DBConfig {
 		sessionBuilder.addProperties(getHibernateProperties());
 		sessionBuilder.scanPackages("com.of");
 		System.out.println("Session");
-		
 		return sessionBuilder.buildSessionFactory();
 		
 	}
