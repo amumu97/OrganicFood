@@ -16,14 +16,14 @@
   
   <style> 
   
-  body
-  
-.nav{
+.nav
+{
 		padding-right: 10px;
 		padding-left: 10px;
 	
 }
 
+ body
 {
     background: url('https://static.pexels.com/photos/109277/pexels-photo-109277.jpeg') black ;
     background-size: cover;

@@ -34,12 +34,7 @@
 			                    <td><form:input path="description"/></td>
 		            </tr>
 		            
-		           <%--  <tr>
-			                    <td><form:label path="stock">Product Stock</form:label></td>
-			                    <td><form:input path="stock"/></td>
-		            </tr> --%>
-		            
-		            	    <tr>
+		            <tr>
 			                    <td><form:label path="quantity">Product Quantity</form:label></td>
 			                    <td><form:input path="quantity"/></td>
 		            </tr>

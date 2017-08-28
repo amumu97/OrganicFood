@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.of.dao.CategoryDao;
 import com.of.dao.ProductDao;
+import com.of.dao.SupplierDao;
 import com.of.model.Product;
 
 import org.slf4j.Logger;
@@ -24,16 +26,27 @@ import org.slf4j.LoggerFactory;
 @Controller
 public class ProductController {
 	
-	Logger log=LoggerFactory.getLogger(ProductController.class);
+	
+	@Autowired
+	SupplierDao supplierDao;
+
+	@Autowired
+	CategoryDao categoryDao;
+
 	@Autowired
 	ProductDao productDao;
+	
+	Logger log=LoggerFactory.getLogger(ProductController.class);
 	
 	@RequestMapping( value="/product",method=RequestMethod.GET)
 
     public String addPage(@ModelAttribute("product") Product product, Model model)
 	
 	{
-		model.addAttribute("productList",productDao.getProducts());
+		model.addAttribute("productList", productDao.getProducts());
+		model.addAttribute("categoryList", categoryDao.getCategories());
+		model.addAttribute("supplierList", supplierDao.getSuppliers());
+		
 		return "productForm";
 	}
 	

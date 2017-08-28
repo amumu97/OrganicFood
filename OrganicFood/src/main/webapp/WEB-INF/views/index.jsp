@@ -3,26 +3,134 @@
 <%@ page isELIgnored="false"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
 <head>
+<title>HOME</title>
 <script src="//code.jquery.com/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+	$(document)
+			.ready(
+					function() {
+						var showChar = 38;
+						var ellipsestext = "...";
+						var moretext = "more";
+						var lesstext = "less";
+						$('.more')
+								.each(
+										function() {
+											var content = $(this).html();
+
+											if (content.length > showChar) {
+
+												var c = content.substr(0,
+														showChar);
+												var h = content.substr(
+														showChar - 1,
+														content.length
+																- showChar);
+
+												var html = c
+														+ '<span class="moreellipses">'
+														+ ellipsestext
+														+ '&nbsp;</span><span class="morecontent"><span>'
+														+ h
+														+ '</span>&nbsp;&nbsp;<a href="" class="morelink">'
+														+ moretext
+														+ '</a></span>';
+
+												$(this).html(html);
+											}
+
+										});
+
+						$(".morelink").click(function() {
+							if ($(this).hasClass("less")) {
+								$(this).removeClass("less");
+								$(this).html(moretext);
+							} else {
+								$(this).addClass("less");
+								$(this).html(lesstext);
+							}
+							$(this).parent().prev().toggle();
+							$(this).prev().toggle();
+							return false;
+						});
+					});
+</script>
+
 <style>
 
-body {
-	background: #f1f1f1;
+a.morelink {
+	text-decoration: none;
+	outline: none;
 }
 
-.nav{
+.morecontent span {
+	display: none;
+}
+
+body {
+	background: #FFFFFF;
+}
+
+.nav {
 	padding-right: 10px;
 	padding-left: 10px;
-
+	background: #F5F5F5;
+	
+}
+ 
+@media screen and (max-width: 768px) {
+	.row-offcanvas {
+		position: relative;
+		-webkit-transition: all 0.25s ease-out;
+		-moz-transition: all 0.25s ease-out;
+		transition: all 0.25s ease-out;
+		background: #F5F5F5;
 }
 
+.row-offcanvas-left
+.sidebar-offcanvas {
+		left: -40%;
+}
+	
+.row-offcanvas-left.active {
+		left: 40%;
+}
+	
+.sidebar-offcanvas {
+		position: absolute;
+		top: 0;
+		width: 40%;
+		margin-left: 12px;
+}
+}
+
+#sidebar {
+	padding: 15px;
+	margin-top: 10px;
+}
+
+.item {
+	width: 100%;
+}
+
+.carousel-inner {
+	width: 100%;
+	max-height: 400px !important;
+}
 
 
 .product-item {
@@ -30,6 +138,11 @@ body {
 	background: #fff;
 	margin-top: 20px;
 	position: relative;
+	box-shadow: 5px 5px rgba(234, 234, 234, 0.9);
+	
+}
+
+	
 }
 
 .product-item:hover {
@@ -137,7 +250,7 @@ body {
 </head>
 <body>
 
-<!-- NAVBAR START -->
+	<!-- NAVBAR START -->
 
 	<nav class="navbar navbar-inverse">
 	<div class="container-fluid"></div>
@@ -155,18 +268,21 @@ body {
 	<ul class="nav navbar-nav navbar-right">
 
 		<sec:authorize access="isAuthenticated()">
-		<li><a href="home"><span class="glyphicon glyphicon-user"> Welcome:<sec:authentication property="principal.username"/></span></a></li>
+			<li><a href="home"><span class="glyphicon glyphicon-user">
+						Welcome:<sec:authentication property="principal.username" />
+				</span></a></li>
 		</sec:authorize>
-		
+
 		<sec:authorize access="!isAuthenticated()">
-			<li><a href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-			<li><a href="login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+			<li><a href="register"><span
+					class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			<li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 		</sec:authorize>
 
 		<sec:authorize access="isAuthenticated()">
-		<li><a href="yourCart" id="cart-popover" class="btn"
-			data-placement="bottom" title="Your Cart"> Your Cart <span
-				class="glyphicon glyphicon-shopping-cart"></span></a></li>
+			<li><a href="yourCart" id="cart-popover" class="btn"
+				data-placement="bottom" title="Your Cart"> Your Cart <span
+					class="glyphicon glyphicon-shopping-cart"></span></a></li>
 		</sec:authorize>
 
 		<sec:authorize access="isAuthenticated()">
@@ -176,46 +292,123 @@ body {
 	</ul>
 
 	</nav>
+
+	<!-- SIDE NAVBAR/BODY TEST -->
 	
-<!-- NAVBAR END -->
+	<div class="container-fluid">
+		<div class="row row-offcanvas row-offcanvas-left">
+			<div class="col-sm-2 sidebar-offcanvas" id="sidebar"
+				role="navigation">
+				<div class="sidebar-nav">
+					<ul class="nav">
+						<li class="active"><a href="#">Coupons</a></li>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">News</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<!-- CAROUSEL -->
+	
+			<div class="col-sm-9" id="content">
+				<div class="container">
+					<div id="myCarousel" class="carousel slide" data-ride="carousel">
 
-<!-- NEW CODE START -->
-<div class="container">
-    <div class="row">
-    
-<c:forEach items="${Plist}" var="product">
-        <div class="col-md-3">
-            <div class="product-item">
-              <div class="pi-img-wrapper">
-                <img src="/OrganicFood/myImage/imageDisplay?id=${product.id}" 
-                class="img-responsive" 
-                alt="Quinoa Rice" 
-                style="width: 150px; height: 250px">
-                <div>
-                  <a href="#" class="btn">View</a>
-                </div>
-              </div>
-              <h3><c:out value="${product.name }" /></h3>
-              <!-- <div class="pi-price">$29.00</div> -->
-              <div class="form-group">
-							<input type="text" class="form-control"
-								value="${product.description}" readonly="readonly">
-			  </div>
-              <div class="form-group">
-				<input type="text" class="form-control"
-					   value="Rs.${product.price}" readonly="readonly">
-			  </div>
-              <a href="addtoCart/${product.id}" class="btn add2cart">Add to cart</a>
-              <div class="sticker sticker-new"></div>
-            </div>
-        </div>
-   </c:forEach> </div>
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+							<li data-target="#myCarousel" data-slide-to="1"></li>
+							<li data-target="#myCarousel" data-slide-to="2"></li>
+						</ol>
 
-</div>
-<br>
-<br>
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner">
+							<div class="item active">
+								<img
+									src="https://static.pexels.com/photos/434230/pexels-photo-434230.jpeg"
+									alt="Los Angeles" class="img-responsive" style="width: 100%;">
+							</div>
 
-<!-- NEW CODE END -->
+							<div class="item">
+								<img
+									src="https://static.pexels.com/photos/221091/pexels-photo-221091.jpeg"
+									alt="Chicago" class="img-responsive" style="width: 100%;">
+							</div>
+
+							<div class="item">
+								<img
+									src="https://static.pexels.com/photos/162686/plums-fruit-jam-violet-162686.jpeg"
+									alt="New york" class="img-responsive" style="width: 100%;">
+							</div>
+						</div>
+
+						<!-- Left and right controls -->
+						<a class="left carousel-control" href="#myCarousel"
+							data-slide="prev"> <span
+							class="glyphicon glyphicon-chevron-left"></span> <span
+							class="sr-only">Previous</span>
+						</a> <a class="right carousel-control" href="#myCarousel"
+							data-slide="next"> <span
+							class="glyphicon glyphicon-chevron-right"></span> <span
+							class="sr-only">Next</span>
+						</a>
+					</div>
+				</div>
+
+				<br>
+
+
+				<!-- PRODUCT LIST -->
+
+				<div class="container">
+					<div class="row">
+						<c:forEach items="${Plist}" var="product">
+							<div class="col-sm-3">
+								<div class="product-item">
+									<div class="pi-img-wrapper">
+										<img src="/OrganicFood/myImage/imageDisplay?id=${product.id}"
+											class="img-responsive" style="width: 180px; height: 250px">
+										<div>
+											<a href="/OrganicFood/myImage/imageDisplay?id=${product.id}"
+												class="btn">View</a>
+										</div>
+									</div>
+									<h3>${product.name }</h3>
+									<p class="comment more">${product.description}</p>
+									<h5>Rs.${product.price}</h5>
+
+									<a href="addtoCart/${product.id}" class="btn add2cart">Add
+										to cart</a>
+									<div class="sticker sticker-new"></div>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-1"></div>
+			
+			
+			
+		</div>
+	</div>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+	<!-- NEW CODE END -->
+
 </body>
 
 <jsp:include page="footer.jsp"></jsp:include>
