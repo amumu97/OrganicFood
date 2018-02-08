@@ -2,15 +2,15 @@
 
 This Ecommerce project is built using Spring, Hibernate ORM and Spring security. Some of its features include:
 
-Registration page for new Users
-Login page for registered Users
-Different pages visible to users and admin. Admins have control of the following pages, where they can choose to populate/update the products listed on the website. 
-Category (Home Appliances, Food, Beauty, etc.) 
-Supplier
-Product 
-Cart
-Add to Cart functionality
-View/Update your cart items
+* Registration page for new Users
+* Login page for registered Users
+* Different pages visible to users and admin. Admins have control of the following pages, where they can choose to populate/update the products listed on the website. 
+  * Category (Home Appliances, Food, Beauty, etc.) 
+  * Supplier
+  * Product 
+* Cart
+  * Add to Cart functionality
+  * View/Update your cart items
 
 ### Softwares Used
 
